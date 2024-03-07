@@ -1,1 +1,8 @@
-properties
+spring:
+  main:
+    banner-mode: off
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/ticket_market
+    name: root
+    password: loxy1517

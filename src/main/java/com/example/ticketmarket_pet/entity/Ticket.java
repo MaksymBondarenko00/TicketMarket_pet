@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.AreaType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,16 +14,36 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "tickets")
 @Getter
 @Setter
 public class Ticket {
+    @Id
+    @Column(name = "ticket_id")
     private UUID tickerID;
+
+    @OneToOne
+    @Column(name = "event_id")
     private Event eventID;
+
+    @OneToOne
+    @Column(name = "participant")
     private User participant;
+
+    @Column(name = "price")
     private BigDecimal price;
+
+    @Column(name = "service_paymants")
     private BigDecimal servicePayments;
+
+    @Column(name = "type_of_area")
     private AreaType typeOfArea;
+
+    @Column(name = "has_bought")
     private boolean hasBought;
+
+    @Column(name = "created_at")
     private Timestamp createdAt;
 
     @Override

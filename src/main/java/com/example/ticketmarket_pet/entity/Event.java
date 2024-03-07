@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.EventType;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,13 +13,26 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
+@Table(name = "events")
 @Getter
 @Setter
 public class Event {
+    @Id
+    @Column(name = "event_id")
     private UUID eventID;
+
+    @OneToMany
+    @Column(name = "lisr_of_concert")
     private List<Concert> listOfConcerts;
+
+    @Column(name = "event_type")
     private EventType eventType;
+
+    @Column(name = "name")
     private String name;
+
+    @Column(name = "description")
     private String description;
 
     @Override
