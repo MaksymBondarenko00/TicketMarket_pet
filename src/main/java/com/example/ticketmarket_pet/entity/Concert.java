@@ -21,15 +21,18 @@ import java.util.UUID;
 @Setter
 public class Concert {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "concert_id")
     private UUID concertID;
 
     @OneToOne
-    @Column(name = "event_name")
+    @JoinColumn(name = "event_name",
+    referencedColumnName = "event_id")
     private Event eventName;
 
     @OneToMany
-    @Column(name = "list_of_artist")
+    @JoinColumn(name = "list_of_artist",
+    referencedColumnName = "artist_id")
     private List<Artist> listOfArtists;
 
     @ElementCollection

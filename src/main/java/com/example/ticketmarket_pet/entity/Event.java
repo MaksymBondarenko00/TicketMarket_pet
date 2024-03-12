@@ -19,11 +19,12 @@ import java.util.UUID;
 @Setter
 public class Event {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "event_id")
     private UUID eventID;
 
     @OneToMany
-    @Column(name = "lisr_of_concert")
+    @Column(name = "list_of_concert")
     private List<Concert> listOfConcerts;
 
     @Column(name = "event_type")

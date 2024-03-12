@@ -20,15 +20,18 @@ import java.util.UUID;
 @Setter
 public class Ticket {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "ticket_id")
     private UUID tickerID;
 
     @OneToOne
-    @Column(name = "event_id")
+    @JoinColumn(name = "event_id",
+    referencedColumnName = "event_id")
     private Event eventID;
 
     @OneToOne
-    @Column(name = "participant")
+    @JoinColumn(name = "participant",
+    referencedColumnName = "user_id")
     private User participant;
 
     @Column(name = "price")

@@ -1,5 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
+import com.example.ticketmarket_pet.entity.enums.RoleOfUser;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -10,6 +11,7 @@ import org.springframework.context.annotation.Primary;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -20,6 +22,7 @@ import java.util.UUID;
 @Setter
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "user_id")
     private UUID userID;
 
@@ -30,15 +33,20 @@ public class User {
     private String lastName;
 
     @OneToMany
-    @Column(name = "user_tickets")
+    @JoinColumn(name = "user_tickets",
+            referencedColumnName = "ticket_id")
     private List<Ticket> userTickets;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
     @OneToOne
-    @Column(name = "user_info")
+    @JoinColumn(name = "user_info",
+            referencedColumnName = "user_info_id")
     private UserInfo userInfo;
+
+    @Column(name = "roles")
+    private Set<RoleOfUser> roles;
 
     @Column(name = "is_blocked")
     private boolean isBlocked;
