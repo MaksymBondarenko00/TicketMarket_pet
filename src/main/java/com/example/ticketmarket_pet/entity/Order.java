@@ -43,6 +43,9 @@ public class Order {
     @Column(name = "payment_method")
     private PaymentMethod paymentMethod;
 
+    @Column(name = "currency_code")
+    private String currencyCode;
+
     @Column(name = "created_at")
     private LocalDate createdAt;
 

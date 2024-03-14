@@ -22,9 +22,9 @@ public class Concert {
     @Column(name = "concert_id")
     private UUID concertID;
 
-    @OneToOne
-    @JoinColumn(name = "event_name")
-    private Event eventName;
+
+    @Column(name = "concert_name")
+    private String concertName;
 
     @OneToMany
     @JoinColumn(name = "list_of_artist")
@@ -53,18 +53,18 @@ public class Concert {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Concert concert = (Concert) o;
-        return Objects.equals(concertID, concert.concertID) && Objects.equals(eventName, concert.eventName) && country == concert.country && city == concert.city;
+        return Objects.equals(concertID, concert.concertID) && Objects.equals(concertName, concert.concertName) && country == concert.country && city == concert.city;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(concertID, eventName, country, city);
+        return Objects.hash(concertID, concertName, country, city);
     }
 
     @Override
     public String toString() {
         return "Concert{" +
-                "eventName=" + eventName +
+                "eventName=" + concertName +
                 ", listOfArtists=" + listOfArtists +
                 ", country=" + country +
                 ", city=" + city +

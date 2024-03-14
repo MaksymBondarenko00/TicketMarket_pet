@@ -1,7 +1,6 @@
 -- liquibase formatted sql
 
--- changeset
-
+-- changeset 6ezdar:1
 CREATE TABLE IF NOT EXISTS users
 (
     user_id         binary(16) primary key not null,
@@ -42,7 +41,7 @@ CREATE TABLE IF NOT EXISTS tickets
 CREATE TABLE IF NOT EXISTS concerts
 (
     concert_id     binary(16) primary key not null,
-    event_name     varchar(64)            not null,
+    concert_name   varchar(64)            not null,
     list_of_artist text                   not null,
     concert_dates  text                   not null,
     country        varchar(32)            not null,
@@ -76,6 +75,7 @@ CREATE TABLE IF NOT EXISTS orders
     selected_tickets text                   not null,
     promo_code       varchar(32),
     payment_method   varchar(32),
+    currency_code    varchar(16)            not null,
     created_at       varchar(32)
 );
 
