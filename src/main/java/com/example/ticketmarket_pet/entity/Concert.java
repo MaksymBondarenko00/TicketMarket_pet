@@ -27,12 +27,12 @@ public class Concert {
 
     @OneToOne
     @JoinColumn(name = "event_name",
-    referencedColumnName = "event_id")
+            referencedColumnName = "event_id")
     private Event eventName;
 
     @OneToMany
     @JoinColumn(name = "list_of_artist",
-    referencedColumnName = "artist_id")
+            referencedColumnName = "artist_id")
     private List<Artist> listOfArtists;
 
     @ElementCollection

@@ -1,6 +1,5 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.ArtistRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,40 +12,36 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "artists")
+@Table(name = "promocodes")
 @Getter
 @Setter
-public class Artist {
+public class PromoCode {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "artist_id")
-    private UUID artistID;
+    @Column(name = "promo_id")
+    private UUID promoId;
 
-    @Column(name = "name")
-    private String name;
-
-    @Column(name = "role")
-    private ArtistRole role;
+    @Column(name = "dicount_percentage")
+    private int discountPercentage;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Artist artist = (Artist) o;
-        return Objects.equals(artistID, artist.artistID) && Objects.equals(name, artist.name);
+        PromoCode promoCode = (PromoCode) o;
+        return discountPercentage == promoCode.discountPercentage && Objects.equals(promoId, promoCode.promoId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(artistID, name);
+        return Objects.hash(promoId, discountPercentage);
     }
 
     @Override
     public String toString() {
-        return "Artist{" +
-                "artistID=" + artistID +
-                ", name='" + name + '\'' +
-                ", role=" + role +
+        return "PromoCode{" +
+                "promoId=" + promoId +
+                ", discountPercentage=" + discountPercentage +
                 '}';
     }
 }

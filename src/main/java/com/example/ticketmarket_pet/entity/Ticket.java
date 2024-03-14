@@ -26,12 +26,12 @@ public class Ticket {
 
     @OneToOne
     @JoinColumn(name = "event_id",
-    referencedColumnName = "event_id")
+            referencedColumnName = "event_id")
     private Event eventID;
 
     @OneToOne
     @JoinColumn(name = "participant",
-    referencedColumnName = "user_id")
+            referencedColumnName = "user_id")
     private User participant;
 
     @Column(name = "price")
