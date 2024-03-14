@@ -12,7 +12,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "promocodes")
+@Table(name = "promo_codes")
 @Getter
 @Setter
 public class PromoCode {
@@ -21,7 +21,7 @@ public class PromoCode {
     @Column(name = "promo_id")
     private UUID promoId;
 
-    @Column(name = "dicount_percentage")
+    @Column(name = "discount_percentage")
     private int discountPercentage;
 
     @Override

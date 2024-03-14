@@ -2,7 +2,10 @@ spring:
   main:
     banner-mode: off
 
-  datasource:
-    url: jdbc:mysql://localhost:3306/ticket_market
-    name: root
-    password: loxy1517
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: none
+
+  liquibase:
+    change-log: /db/changelog/changes/changelog-master.xml

@@ -33,7 +33,7 @@ public class Order {
     private BigDecimal orderCost;
 
     @OneToOne
-    @JoinColumn(name = "promocode", referencedColumnName = "promo_id")
+    @JoinColumn(name = "promo_code", referencedColumnName = "promo_id")
     private PromoCode promocode;
 
     @OneToMany

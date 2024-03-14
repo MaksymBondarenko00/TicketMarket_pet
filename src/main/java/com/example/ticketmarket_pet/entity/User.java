@@ -32,24 +32,22 @@ public class User {
     private String lastName;
 
     @OneToMany
-    @JoinColumn(name = "user_tickets",
-            referencedColumnName = "ticket_id")
+    @JoinColumn(name = "user_tickets", referencedColumnName = "ticket_id")
     private List<Ticket> userTickets;
 
     @OneToMany
-    @JoinColumn(name = "user_orders",
-            referencedColumnName = "order_id")
+    @JoinColumn(name = "user_orders", referencedColumnName = "order_id")
     private List<Order> orders;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
     @OneToOne
-    @JoinColumn(name = "user_info",
-            referencedColumnName = "user_info_id")
+    @JoinColumn(name = "user_info", referencedColumnName = "user_info_id")
     private UserInfo userInfo;
 
-    @Column(name = "roles")
+    @OneToMany
+    @JoinColumn(name = "roles", referencedColumnName = "role_id")
     private Set<UserRole> roles;
 
     @Column(name = "is_blocked")
