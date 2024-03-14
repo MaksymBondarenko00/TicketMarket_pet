@@ -25,11 +25,11 @@ public class Ticket {
     private UUID tickerID;
 
     @OneToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "event_id")
+    @JoinColumn(name = "event_id")
     private Event eventID;
 
-    @OneToOne
-    @JoinColumn(name = "user_id", referencedColumnName = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User participant;
 
     @Column(name = "price")

@@ -24,7 +24,7 @@ public class Event {
     private UUID eventID;
 
     @OneToMany
-    @JoinColumn(name = "list_of_concert", referencedColumnName = "concert_id")
+    @JoinColumn(name = "list_of_concert")
     private List<Concert> listOfConcerts;
 
     @Column(name = "event_type")

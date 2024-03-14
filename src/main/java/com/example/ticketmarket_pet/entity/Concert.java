@@ -23,11 +23,11 @@ public class Concert {
     private UUID concertID;
 
     @OneToOne
-    @JoinColumn(name = "event_name", referencedColumnName = "event_id")
+    @JoinColumn(name = "event_name")
     private Event eventName;
 
     @OneToMany
-    @JoinColumn(name = "list_of_artist", referencedColumnName = "artist_id")
+    @JoinColumn(name = "list_of_artist")
     private List<Artist> listOfArtists;
 
     @ElementCollection

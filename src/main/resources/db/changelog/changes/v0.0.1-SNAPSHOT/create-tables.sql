@@ -1,14 +1,18 @@
+-- liquibase formatted sql
+
+-- changeset
+
 CREATE TABLE IF NOT EXISTS users
 (
-    user_id      binary(16) primary key not null,
-    first_name   varchar(30)            not null,
-    last_name    varchar(30)            not null,
-    user_tickets text,
-    user_orders  text,
-    user_info    varchar(30)            not null,
-    role         varchar(20)            not null,
-    is_blocked   boolean,
-    created_at   varchar(30)            not null
+    user_id         binary(16) primary key not null,
+    first_name      varchar(30)            not null,
+    last_name       varchar(30)            not null,
+    user_tickets_id text,
+    user_orders     text,
+    user_info       varchar(30)            not null,
+    role            varchar(20)            not null,
+    is_blocked      boolean,
+    created_at      varchar(30)            not null
 );
 
 CREATE TABLE IF NOT EXISTS user_info
@@ -27,7 +31,7 @@ CREATE TABLE IF NOT EXISTS tickets
 (
     ticket_id        binary(16) primary key not null,
     event_id         varchar(30)            not null,
-    user_id      varchar(30),
+    user_id          varchar(30),
     price            double                 not null,
     service_payments double,
     area_type        varchar(30)            not null,
@@ -51,7 +55,7 @@ CREATE TABLE IF NOT EXISTS artists
 (
     artist_id binary(16) primary key not null,
     name      varchar(64)            not null,
-    role      varchar(64)            not null,
+    role      varchar(64)            not null
 
 );
 
