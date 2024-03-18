@@ -1,12 +1,12 @@
 -- liquibase formatted sql
 
--- changeset 6ezdar:1
+-- changeset 6ezdar:users
 CREATE TABLE IF NOT EXISTS users
 (
     user_id         binary(16) primary key not null,
     first_name      varchar(30)            not null,
     last_name       varchar(30)            not null,
-    user_tickets_id text,
+    user_tickets_id binary(16),
     user_orders     text,
     user_info       varchar(30)            not null,
     role            varchar(20)            not null,
@@ -14,10 +14,12 @@ CREATE TABLE IF NOT EXISTS users
     created_at      varchar(30)            not null
 );
 
+-- changeset 6ezdar:orders
 CREATE TABLE IF NOT EXISTS user_info
 (
     user_info_id binary(16) primary key not null,
     username     varchar(32)            not null,
+    user_id      binary(16)             not null,
     country      varchar(32)            not null,
     city         varchar(32)            not null,
     password     varchar(64)            not null,
@@ -26,6 +28,7 @@ CREATE TABLE IF NOT EXISTS user_info
     card_number  varchar(64)            not null
 );
 
+-- changeset 6ezdar:tickets
 CREATE TABLE IF NOT EXISTS tickets
 (
     ticket_id        binary(16) primary key not null,
@@ -38,6 +41,8 @@ CREATE TABLE IF NOT EXISTS tickets
     created_at       varchar(30)            not null
 );
 
+
+-- changeset 6ezdar:concerts
 CREATE TABLE IF NOT EXISTS concerts
 (
     concert_id     binary(16) primary key not null,
@@ -50,6 +55,7 @@ CREATE TABLE IF NOT EXISTS concerts
     tickets_count  integer                not null
 );
 
+-- changeset 6ezdar:artists
 CREATE TABLE IF NOT EXISTS artists
 (
     artist_id binary(16) primary key not null,
@@ -58,6 +64,7 @@ CREATE TABLE IF NOT EXISTS artists
 
 );
 
+-- changeset 6ezdar:events
 CREATE TABLE IF NOT EXISTS events
 (
     event_id        binary(16) primary key not null,
@@ -67,6 +74,7 @@ CREATE TABLE IF NOT EXISTS events
     created_at      varchar(32)            not null
 );
 
+-- changeset 6ezdar:orders
 CREATE TABLE IF NOT EXISTS orders
 (
     order_id         binary(16) primary key not null,
@@ -79,6 +87,7 @@ CREATE TABLE IF NOT EXISTS orders
     created_at       varchar(32)
 );
 
+-- changeset 6ezdar:promo_codes
 CREATE TABLE IF NOT EXISTS promo_codes
 (
     promo_id            binary(16) primary key not null,

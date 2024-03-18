@@ -1,7 +1,5 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.City;
-import com.example.ticketmarket_pet.entity.enums.Country;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -37,10 +35,10 @@ public class Concert {
 
 
     @Column(name = "country" )
-    private Country country;
+    private String country;
 
     @Column(name = "city")
-    private City city;
+    private String city;
 
     @Column(name = "address")
     private String address;

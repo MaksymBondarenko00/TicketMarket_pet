@@ -43,16 +43,21 @@ values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', 101, 5, 'Test 
        (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Bob', 'Brown', 104, 7, 'Test user 4 info', 'admin', 0, NOW()),
        (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Emma', 'Davis', 105, 6, 'Test user 5 info', 'customer', 1, NOW());
 
-insert into user_info(user_info_id, username, country, city, password, email, phone_number, card_number)
-values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', 'USA', 'New York', 'password123', 'john@example.com',
+insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number)
+values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'USA',
+        'New York', 'password123', 'john@example.com',
         '123-456-7890', '1234-5678-9012-3456'),
-       (UNHEX('6f8202f6b9034cc789aeb332b2d23de5'), 'jane_smith', 'Canada', 'Toronto', 'qwerty456', 'jane@example.com',
+       (UNHEX('6f8202f6b9034cc789aeb332b2d23de5'), 'jane_smith', UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Canada',
+        'Toronto', 'qwerty456', 'jane@example.com',
         '987-654-3210', '9876-5432-1098-7654'),
-       (UNHEX('7c9dca5ffea343d39e8595e5f6abf862'), 'alice_johnson', 'UK', 'London', 'myp@ssw0rd', 'alice@example.com',
+       (UNHEX('7c9dca5ffea343d39e8595e5f6abf862'), 'alice_johnson', UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'UK',
+        'London', 'myp@ssw0rd', 'alice@example.com',
         '456-789-0123', '4567-8901-2345-6789'),
-       (UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'), 'bob_brown', 'Australia', 'Sydney', 'securepass', 'bob@example.com',
+       (UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'), 'bob_brown', UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Australia',
+        'Sydney', 'securepass', 'bob@example.com',
         '789-012-3456', '7890-1234-5678-9012'),
-       (UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'), 'emma_davis', 'Germany', 'Berlin', 'pass1234', 'emma@example.com',
+       (UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'), 'emma_davis', UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Germany',
+        'Berlin', 'pass1234', 'emma@example.com',
         '012-345-6789', '0123-4567-8901-2345');
 
 insert into tickets(ticket_id, event_id, user_id, price, service_payments, area_type, has_bought, created_at)

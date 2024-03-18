@@ -1,7 +1,5 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.City;
-import com.example.ticketmarket_pet.entity.enums.Country;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,6 +21,9 @@ public class UserInfo {
     @Column(name = "user_info_id")
     private UUID userInfoId;
 
+    @OneToOne
+    private User user;
+
     @Column(name = "username")
     private String username;
 
@@ -36,10 +37,10 @@ public class UserInfo {
     private String cardNumber;
 
     @Column(name = "country")
-    private Country country;
+    private String country;
 
     @Column(name = "city")
-    private City city;
+    private String city;
 
     @Column(name = "password")
     private String password;

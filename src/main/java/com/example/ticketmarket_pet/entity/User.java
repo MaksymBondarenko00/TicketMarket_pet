@@ -31,22 +31,20 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany
-    @JoinColumn(name = "user_tickets_id")
+    @OneToMany(mappedBy = "participant")
     private List<Ticket> userTickets;
 
-    @OneToMany
-    @JoinColumn(name = "user_orders")
+    @OneToMany(mappedBy = "clientId")
     private List<Order> orders;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToOne
-    @JoinColumn(name = "user_info")
+    @OneToOne(mappedBy = "user")
     private UserInfo userInfo;
 
     @Column(name = "roles")
+    @Enumerated(EnumType.ORDINAL)
     private Set<UserRole> roles;
 
     @Column(name = "is_blocked")
