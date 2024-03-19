@@ -36,7 +36,8 @@ public class Order {
     @JoinColumn(name = "promo_code")
     private PromoCode promocode;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany
+    @Column(name = "selected_tickets")
     private List<Ticket> selectedTickets;
 
     @Column(name = "payment_method")
