@@ -1,10 +1,10 @@
 spring:
   main:
     banner-mode: off
-  datasource:
-    url: jdbc:mysql://localhost:3306/ticket_market
-    username: root
-    password: loxy1517
+#  datasource:
+#    url: jdbc:mysql://localhost:3306/ticket_market
+#    username: root
+#    password: loxy1517
   jpa:
     show-sql: true
     hibernate:
