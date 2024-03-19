@@ -1,6 +1,9 @@
 package com.example.ticketmarket_pet.entity.enums;
 
-public enum RoleOfUser {
+import jakarta.persistence.Entity;
+
+
+public enum UserRole {
     CUSTOMER,
     MANAGER,
     ADMIN

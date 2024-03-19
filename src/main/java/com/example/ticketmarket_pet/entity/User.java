@@ -1,12 +1,11 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.RoleOfUser;
+import com.example.ticketmarket_pet.entity.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.context.annotation.Primary;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -32,21 +31,21 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @OneToMany
-    @JoinColumn(name = "user_tickets",
-            referencedColumnName = "ticket_id")
+    @OneToMany(mappedBy = "participant")
     private List<Ticket> userTickets;
+
+    @OneToMany(mappedBy = "clientId")
+    private List<Order> orders;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToOne
-    @JoinColumn(name = "user_info",
-            referencedColumnName = "user_info_id")
+    @OneToOne(mappedBy = "user")
     private UserInfo userInfo;
 
     @Column(name = "roles")
-    private Set<RoleOfUser> roles;
+    @Enumerated(EnumType.ORDINAL)
+    private Set<UserRole> roles;
 
     @Column(name = "is_blocked")
     private boolean isBlocked;

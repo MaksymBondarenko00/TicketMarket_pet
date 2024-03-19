@@ -1,17 +1,12 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.City;
-import com.example.ticketmarket_pet.entity.enums.Country;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.Date;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -25,30 +20,30 @@ public class Concert {
     @Column(name = "concert_id")
     private UUID concertID;
 
-    @OneToOne
-    @JoinColumn(name = "event_name",
-    referencedColumnName = "event_id")
-    private Event eventName;
+
+    @Column(name = "concert_name")
+    private String concertName;
 
     @OneToMany
-    @JoinColumn(name = "list_of_artist",
-    referencedColumnName = "artist_id")
+    @JoinColumn(name = "list_of_artist")
     private List<Artist> listOfArtists;
 
     @ElementCollection
-    @Column(name = "dates_of_concerts")
-    private List<Date> datesOfConcerts;
+    @CollectionTable(name = "concert_dates", joinColumns = @JoinColumn(name = "concert_id"))
+    @Column(name = "date")
+    private Set<Date> datesOfConcerts;
 
-    @Column(name = "country")
-    private Country country;
+
+    @Column(name = "country" )
+    private String country;
 
     @Column(name = "city")
-    private City city;
+    private String city;
 
     @Column(name = "address")
     private String address;
 
-    @Column(name = "count_of_tickets")
+    @Column(name = "tickets_count")
     private int countOfTickets;
 
     @Override
@@ -56,18 +51,18 @@ public class Concert {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Concert concert = (Concert) o;
-        return Objects.equals(concertID, concert.concertID) && Objects.equals(eventName, concert.eventName) && country == concert.country && city == concert.city;
+        return Objects.equals(concertID, concert.concertID) && Objects.equals(concertName, concert.concertName) && country == concert.country && city == concert.city;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(concertID, eventName, country, city);
+        return Objects.hash(concertID, concertName, country, city);
     }
 
     @Override
     public String toString() {
         return "Concert{" +
-                "eventName=" + eventName +
+                "eventName=" + concertName +
                 ", listOfArtists=" + listOfArtists +
                 ", country=" + country +
                 ", city=" + city +

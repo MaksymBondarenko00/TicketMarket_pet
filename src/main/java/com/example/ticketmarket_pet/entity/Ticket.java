@@ -25,23 +25,21 @@ public class Ticket {
     private UUID tickerID;
 
     @OneToOne
-    @JoinColumn(name = "event_id",
-    referencedColumnName = "event_id")
+    @JoinColumn(name = "event_id")
     private Event eventID;
 
-    @OneToOne
-    @JoinColumn(name = "participant",
-    referencedColumnName = "user_id")
+    @ManyToOne
+    @JoinColumn(name = "user_id")
     private User participant;
 
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "service_paymants")
+    @Column(name = "service_payments")
     private BigDecimal servicePayments;
 
-    @Column(name = "type_of_area")
-    private AreaType typeOfArea;
+    @Column(name = "area_type")
+    private AreaType areaType;
 
     @Column(name = "has_bought")
     private boolean hasBought;
@@ -54,12 +52,12 @@ public class Ticket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return Objects.equals(tickerID, ticket.tickerID) && Objects.equals(eventID, ticket.eventID) && Objects.equals(price, ticket.price) && typeOfArea == ticket.typeOfArea;
+        return Objects.equals(tickerID, ticket.tickerID) && Objects.equals(eventID, ticket.eventID) && Objects.equals(price, ticket.price) && areaType == ticket.areaType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tickerID, eventID, price, typeOfArea);
+        return Objects.hash(tickerID, eventID, price, areaType);
     }
 
     @Override
@@ -68,7 +66,7 @@ public class Ticket {
                 "tickerID=" + tickerID +
                 ", eventID=" + eventID +
                 ", price=" + price +
-                ", typeOfArea=" + typeOfArea +
+                ", typeOfArea=" + areaType +
                 '}';
     }
 }
