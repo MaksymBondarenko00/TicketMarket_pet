@@ -1,6 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.example.ticketmarket_pet.entity.enums.UserRole;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,20 +32,25 @@ public class User {
     private String lastName;
 
     @OneToMany(mappedBy = "participant")
+    @JsonIgnore
     private List<Ticket> userTickets;
 
-    @OneToMany(mappedBy = "clientId")
+    @OneToMany(mappedBy = "clientID")
+    @JsonIgnore
     private List<Order> orders;
 
     @Column(name = "created_at")
     private Timestamp createdAt;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private UserInfo userInfo;
 
-    @Column(name = "roles")
-    @Enumerated(EnumType.ORDINAL)
-    private Set<UserRole> roles;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
 
     @Column(name = "is_blocked")
     private boolean isBlocked;

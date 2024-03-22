@@ -15,33 +15,37 @@ values (UNHEX('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0'), 'Artist1', 'Singer'),
        (UNHEX('f0e1d2c3b4a5b6c7d8e9f0a1b2c3d4'), 'Artist4', 'Drummer'),
        (UNHEX('1234567890abcdef1234567890abcdef'), 'Artist5', 'Violinist');
 
-insert into concerts(concert_id, concerts.concert_name, list_of_artist, concert_dates, country, city, address,
+insert into concerts(concert_id, concerts.concert_name, country, city, address,
                      tickets_count)
-values (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'Artist1, Artist2', '2024-04-15', 'USA', 'New York',
+values (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'USA', 'New York',
         '123 Broadway', 1000),
-       (UNHEX('4fd672f8fb8e4249b723aa1850be5f6d'), 'Concert2', 'Artist3, Artist4', '2024-05-20', 'Canada', 'Toronto',
+       (UNHEX('4fd672f8fb8e4249b723aa1850be5f6d'), 'Concert2', 'Canada', 'Toronto',
         '456 King St', 800),
-       (UNHEX('31dc5fa1e7c84f0a84a91414fc7f8f69'), 'Concert3', 'Artist5, Artist6', '2024-06-10', 'UK', 'London',
+       (UNHEX('31dc5fa1e7c84f0a84a91414fc7f8f69'), 'Concert3', 'UK', 'London',
         '789 Oxford St', 1200),
-       (UNHEX('e4f8ed9e3c5f476d8cb75cddcf8c24d2'), 'Concert4', 'Artist7, Artist8', '2024-07-05', 'Australia', 'Sydney',
+       (UNHEX('e4f8ed9e3c5f476d8cb75cddcf8c24d2'), 'Concert4', 'Australia', 'Sydney',
         '101 George St', 1500),
-       (UNHEX('93ae1eaa65094d46b41f2a73e92d1e37'), 'Concert5', 'Artist9, Artist10', '2024-08-15', 'Germany', 'Berlin',
+       (UNHEX('93ae1eaa65094d46b41f2a73e92d1e37'), 'Concert5', 'Germany', 'Berlin',
         '202 Alexanderplatz', 900);
 
-insert into events(event_id, event_name, list_of_concert, description, created_at)
-values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'Artist1, Artist2', 'Description for Concert1', NOW()),
-       (UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'), 'Concert2', 'Artist3, Artist4', 'Description for Concert2', NOW()),
-       (UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'), 'Concert3', 'Artist5, Artist6', 'Description for Concert3', NOW()),
-       (UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'), 'Concert4', 'Artist7, Artist8', 'Description for Concert4', NOW()),
-       (UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'), 'Concert5', 'Artist9, Artist10', 'Description for Concert5', NOW());
+insert into events(event_id, event_name, description, created_at)
+values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'Description for Concert1', NOW()),
+       (UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'), 'Concert2', 'Description for Concert2', NOW()),
+       (UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'), 'Concert3', 'Description for Concert3', NOW()),
+       (UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'), 'Concert4', 'Description for Concert4', NOW()),
+       (UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'), 'Concert5', 'Description for Concert5', NOW());
 
-insert into users(user_id, first_name, last_name, user_tickets_id, user_orders, user_info, role, is_blocked, created_at)
-values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', 101, 5, 'Test user 1 info', 'customer', 0, NOW()),
-       (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Jane', 'Smith', 102, 8, 'Test user 2 info', 'customer', 0, NOW()),
-       (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'Alice', 'Johnson', 103, 3, 'Test user 3 info', 'customer', 0,
-        NOW()),
-       (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Bob', 'Brown', 104, 7, 'Test user 4 info', 'admin', 0, NOW()),
-       (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Emma', 'Davis', 105, 6, 'Test user 5 info', 'customer', 1, NOW());
+insert into users(user_id, first_name, last_name, user_info, role, is_blocked, created_at)
+values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'),
+        UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 0, NOW()),
+       (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Jane', 'Smith', UNHEX('6f8202f6b9034cc789aeb332b2d23de5'),
+        UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 0, NOW()),
+       (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'Alice', 'Johnson', UNHEX('7c9dca5ffea343d39e8595e5f6abf862'),
+        UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 1, NOW()),
+       (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Bob', 'Brown', UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'),
+        UNHEX('16e05517895b448d84d0eb179af1db3d'), 0, NOW()),
+       (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Emma', 'Davis', UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'),
+        UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 1, NOW());
 
 insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number)
 values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'USA',
@@ -68,13 +72,69 @@ values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), 101, 1, 50.00, 5.00, 'VIP', 1
        (UNHEX('c94c7604f9c14d14b99ed2799a44bb4a'), 105, 5, 25.00, 2.50, 'General', 1, NOW());
 
 
-insert into orders(order_id, client_id, order_cost, selected_tickets, promo_code, payment_method, currency_code,
+insert into orders(order_id, client_id, order_cost, promo_code, payment_method, currency_code,
                    created_at)
-values (UNHEX('70f8a1dc8f914f24bc3aa9bb29292482'), 1, 100.00, 'Ticket1, Ticket2', NULL, 'Credit Card', 'EUR', NOW()),
-       (UNHEX('e4b4f7aaefa740c08e63a3fbc5c8a0c7'), 2, 50.00, 'Ticket3', 'PROMO001', 'PayPal', 'USD', NOW()),
-       (UNHEX('dd77d18ae178490d8a4b6d3c747d469f'), 3, 75.00, 'Ticket4, Ticket5', NULL, 'Credit Card', 'UA', NOW()),
-       (UNHEX('8a0cbb1c1b6f47a6b92125382c7f4fd1'), 4, 120.00, 'Ticket6', 'PROMO002', 'Credit Card', 'USD', NOW()),
-       (UNHEX('eb7c2ab3e99941569ee2b3b08b646e5a'), 5, 90.00, 'Ticket7, Ticket8', 'PROMO003', 'PayPal', 'EUR', NOW());
+values (UNHEX('70f8a1dc8f914f24bc3aa9bb29292482'), 1, 100.00, UNHEX('7d3e8918ecf74e8a9e5cf1045d2c4a19'), 'Credit Card',
+        'EUR', NOW()),
+       (UNHEX('e4b4f7aaefa740c08e63a3fbc5c8a0c7'), 2, 50.00, UNHEX('9bf6d26b5937485896e2a3fe8e8cbf0d'), 'PayPal', 'USD',
+        NOW()),
+       (UNHEX('dd77d18ae178490d8a4b6d3c747d469f'), 3, 75.00, NULL, 'Credit Card', 'UA', NOW()),
+       (UNHEX('8a0cbb1c1b6f47a6b92125382c7f4fd1'), 4, 120.00, NULL, 'Credit Card', 'USD', NOW()),
+       (UNHEX('eb7c2ab3e99941569ee2b3b08b646e5a'), 5, 90.00, UNHEX('e80f9a3151564a31b79f229f47c2d4a8'), 'PayPal', 'EUR',
+        NOW());
 
+-- Вставка ролей
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 'ROLE_USER');
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'ROLE_ADMIN');
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_ADMIN');
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_ADMIN');
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_ADMIN');
+
+-- Вставка прав
+INSERT INTO authorities (authority_id, authority_name)
+VALUES (UNHEX('1c88f636f66354e8eb3d76b3f207d4e1'), 'READ_PRIVILEGE');
+INSERT INTO authorities (authority_id, authority_name)
+VALUES (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'WRITE_PRIVILEGE');
+INSERT INTO authorities (authority_id, authority_name)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'WRITE_PRIVILEGE');
+INSERT INTO authorities (authority_id, authority_name)
+VALUES (UNHEX('13c585908dbb4f24b47a9230271d7b12'), 'WRITE_PRIVILEGE');
+INSERT INTO authorities (authority_id, authority_name)
+VALUES (UNHEX('a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4'), 'WRITE_PRIVILEGE');
+
+-- Связывание пользователей и ролей
+INSERT INTO user_role (user_id, role_id)
+VALUES (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')); -- user is a ROLE_USER
+INSERT INTO user_role (user_id, role_id)
+VALUES (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')); -- admin is a ROLE_ADMIN
+INSERT INTO user_role (user_id, role_id)
+VALUES (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a')); -- admin is a ROLE_ADMIN
+INSERT INTO user_role (user_id, role_id)
+VALUES (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), UNHEX('16e05517895b448d84d0eb179af1db3d')); -- admin is a ROLE_ADMIN
+INSERT INTO user_role (user_id, role_id)
+VALUES (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'));
+-- admin is a ROLE_ADMIN
+
+-- Связывание ролей и прав
+INSERT INTO role_authority (role_id, authority_id)
+VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'),
+        UNHEX('1c88f636f66354e8eb3d76b3f207d4e1')); -- ROLE_USER has READ_PRIVILEGE
+INSERT INTO role_authority (role_id, authority_id)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'),
+        UNHEX('16e05517895b448d84d0eb179af1db3d')); -- ROLE_ADMIN has READ_PRIVILEGE
+INSERT INTO role_authority (role_id, authority_id)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'),
+        UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')); -- ROLE_ADMIN has READ_PRIVILEGE
+INSERT INTO role_authority (role_id, authority_id)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'),
+        UNHEX('13c585908dbb4f24b47a9230271d7b12')); -- ROLE_ADMIN has READ_PRIVILEGE
+INSERT INTO role_authority (role_id, authority_id)
+VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'),
+        UNHEX('a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4')); -- ROLE_ADMIN has READ_PRIVILEGE
 
 

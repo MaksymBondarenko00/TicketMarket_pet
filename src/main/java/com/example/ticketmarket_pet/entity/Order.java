@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.PaymentMethod;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,7 +28,7 @@ public class Order {
     private UUID orderId;
 
     @Column(name = "client_id")
-    private UUID clientId;
+    private UUID clientID;
 
     @Column(name = "order_cost")
     private BigDecimal orderCost;
@@ -37,7 +38,7 @@ public class Order {
     private PromoCode promocode;
 
     @OneToMany
-    @Column(name = "selected_tickets")
+    @JoinColumn(name = "order_id")
     private List<Ticket> selectedTickets;
 
     @Column(name = "payment_method")

@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.EventType;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -24,10 +25,11 @@ public class Event {
     private UUID eventID;
 
     @OneToMany
-    @JoinColumn(name = "list_of_concert")
+    @JoinColumn(name = "event_id")
     private List<Concert> listOfConcerts;
 
     @Column(name = "event_type")
+    @Enumerated(EnumType.ORDINAL)
     private EventType eventType;
 
     @Column(name = "name")
