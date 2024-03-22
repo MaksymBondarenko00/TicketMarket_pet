@@ -39,6 +39,7 @@ public class Ticket {
     private BigDecimal servicePayments;
 
     @Column(name = "area_type")
+    @Enumerated(EnumType.ORDINAL)
     private AreaType areaType;
 
     @Column(name = "has_bought")

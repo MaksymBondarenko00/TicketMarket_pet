@@ -21,9 +21,6 @@ public class UserInfo {
     @Column(name = "user_info_id")
     private UUID userInfoId;
 
-    @OneToOne
-    private User user;
-
     @Column(name = "username")
     private String username;
 

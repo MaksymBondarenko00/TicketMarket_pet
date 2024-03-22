@@ -1,5 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,13 +26,8 @@ public class Concert {
     private String concertName;
 
     @OneToMany
-    @JoinColumn(name = "list_of_artist")
+    @JoinColumn(name = "concert_id")
     private List<Artist> listOfArtists;
-
-    @ElementCollection
-    @CollectionTable(name = "concert_dates", joinColumns = @JoinColumn(name = "concert_id"))
-    @Column(name = "date")
-    private Set<Date> datesOfConcerts;
 
 
     @Column(name = "country" )

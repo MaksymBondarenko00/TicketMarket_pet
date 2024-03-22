@@ -11,3 +11,5 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: /db/changelog/changes/changelog-master.xml
+server:
+  port: 8080
