@@ -26,6 +26,7 @@ public class Artist {
     private String name;
 
     @Column(name = "role")
+    @Enumerated(EnumType.STRING)
     private ArtistRole role;
 
     @Override

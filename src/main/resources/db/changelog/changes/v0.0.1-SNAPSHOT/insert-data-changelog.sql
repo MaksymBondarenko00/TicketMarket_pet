@@ -9,13 +9,13 @@ values (UNHEX('7d3e8918ecf74e8a9e5cf1045d2c4a19'), 10),
        (UNHEX('e80f9a3151564a31b79f229f47c2d4a8'), 30);
 
 insert into artists(artist_id, name, role)
-values (UNHEX('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0'), 'Artist1', 'Singer'),
-       (UNHEX('1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6'), 'Artist2', 'Guitarist'),
-       (UNHEX('9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4'), 'Artist3', 'Pianist'),
-       (UNHEX('f0e1d2c3b4a5b6c7d8e9f0a1b2c3d4'), 'Artist4', 'Drummer'),
-       (UNHEX('1234567890abcdef1234567890abcdef'), 'Artist5', 'Violinist');
+values (UNHEX('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0'), 'Artist1', 'BAND'),
+       (UNHEX('1a2b3c4d5e6f7a8b9c0d1e2f3a4b5c6'), 'Artist2', 'COMPANY'),
+       (UNHEX('9a8b7c6d5e4f3a2b1c0d9e8f7a6b5c4'), 'Artist3', 'DJ'),
+       (UNHEX('f0e1d2c3b4a5b6c7d8e9f0a1b2c3d4'), 'Artist4', 'BAND'),
+       (UNHEX('1234567890abcdef1234567890abcdef'), 'Artist5', 'BAND');
 
-insert into concerts(concert_id, concerts.concert_name, country, city, address,
+insert into concerts(concert_id, concert_name, country, city, address,
                      tickets_count)
 values (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'USA', 'New York',
         '123 Broadway', 1000),
@@ -28,12 +28,12 @@ values (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'USA', 'New York'
        (UNHEX('93ae1eaa65094d46b41f2a73e92d1e37'), 'Concert5', 'Germany', 'Berlin',
         '202 Alexanderplatz', 900);
 
-insert into events(event_id, event_name, description, created_at)
-values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'Description for Concert1', NOW()),
-       (UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'), 'Concert2', 'Description for Concert2', NOW()),
-       (UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'), 'Concert3', 'Description for Concert3', NOW()),
-       (UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'), 'Concert4', 'Description for Concert4', NOW()),
-       (UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'), 'Concert5', 'Description for Concert5', NOW());
+insert into events(event_id, event_name, event_type, description, created_at)
+values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'SPECIAL_EVENT', 'Description for Concert1', NOW()),
+       (UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'), 'Concert2', 'THEATER', 'Description for Concert2', NOW()),
+       (UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'), 'Concert3', 'SPECIAL_EVENT', 'Description for Concert3', NOW()),
+       (UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'), 'Concert4', 'FESTIVAL', 'Description for Concert4', NOW()),
+       (UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'), 'Concert5', 'SPORT', 'Description for Concert5', NOW());
 
 insert into users(user_id, first_name, last_name, user_info, role, is_blocked, created_at)
 values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'),
@@ -65,22 +65,32 @@ values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978
         '012-345-6789', '0123-4567-8901-2345');
 
 insert into tickets(ticket_id, event_id, user_id, price, service_payments, area_type, has_bought, created_at)
-values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), 101, 1, 50.00, 5.00, 'VIP', 1, NOW()),
-       (UNHEX('b507b72c49b94b1098f5eac4d30ac9a5'), 102, 2, 30.00, 3.00, 'General', 1, NOW()),
-       (UNHEX('1a4fe3d4cf7a49e39c8e13d93e089fc9'), 103, 3, 20.00, 2.00, 'General', 1, NOW()),
-       (UNHEX('6f0f7dd005ed40c59f315ef41a2f0fb7'), 104, 4, 40.00, 4.00, 'VIP', 1, NOW()),
-       (UNHEX('c94c7604f9c14d14b99ed2799a44bb4a'), 105, 5, 25.00, 2.50, 'General', 1, NOW());
+values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'),
+        UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 50.00, 5.00, 'VIP', 1, NOW()),
+       (UNHEX('b507b72c49b94b1098f5eac4d30ac9a5'), UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'),
+        UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 30.00, 3.00, 'SEAT', 1, NOW()),
+       (UNHEX('1a4fe3d4cf7a49e39c8e13d93e089fc9'), UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'),
+        UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 20.00, 2.00, 'STANDING_AREA', 1, NOW()),
+       (UNHEX('6f0f7dd005ed40c59f315ef41a2f0fb7'), UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'),
+        UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 40.00, 4.00, 'VIP', 1, NOW()),
+       (UNHEX('c94c7604f9c14d14b99ed2799a44bb4a'), UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'),
+        UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 25.00, 2.50, 'DANCE_FLOOR', 1, NOW());
 
 
 insert into orders(order_id, client_id, order_cost, promo_code, payment_method, currency_code,
                    created_at)
-values (UNHEX('70f8a1dc8f914f24bc3aa9bb29292482'), 1, 100.00, UNHEX('7d3e8918ecf74e8a9e5cf1045d2c4a19'), 'Credit Card',
+values (UNHEX('70f8a1dc8f914f24bc3aa9bb29292482'), UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 100.00,
+        UNHEX('7d3e8918ecf74e8a9e5cf1045d2c4a19'), 'CREDIT_CARD',
         'EUR', NOW()),
-       (UNHEX('e4b4f7aaefa740c08e63a3fbc5c8a0c7'), 2, 50.00, UNHEX('9bf6d26b5937485896e2a3fe8e8cbf0d'), 'PayPal', 'USD',
+       (UNHEX('e4b4f7aaefa740c08e63a3fbc5c8a0c7'), UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 50.00,
+        UNHEX('9bf6d26b5937485896e2a3fe8e8cbf0d'), 'PAYPAL', 'USD',
         NOW()),
-       (UNHEX('dd77d18ae178490d8a4b6d3c747d469f'), 3, 75.00, NULL, 'Credit Card', 'UA', NOW()),
-       (UNHEX('8a0cbb1c1b6f47a6b92125382c7f4fd1'), 4, 120.00, NULL, 'Credit Card', 'USD', NOW()),
-       (UNHEX('eb7c2ab3e99941569ee2b3b08b646e5a'), 5, 90.00, UNHEX('e80f9a3151564a31b79f229f47c2d4a8'), 'PayPal', 'EUR',
+       (UNHEX('dd77d18ae178490d8a4b6d3c747d469f'), UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 75.00, NULL,
+        'CREDIT_CARD', 'UA', NOW()),
+       (UNHEX('8a0cbb1c1b6f47a6b92125382c7f4fd1'), UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 120.00, NULL, 'PAYPAL',
+        'USD', NOW()),
+       (UNHEX('eb7c2ab3e99941569ee2b3b08b646e5a'), UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 90.00,
+        UNHEX('e80f9a3151564a31b79f229f47c2d4a8'), 'GOOGLE_PAY', 'EUR',
         NOW());
 
 -- Вставка ролей

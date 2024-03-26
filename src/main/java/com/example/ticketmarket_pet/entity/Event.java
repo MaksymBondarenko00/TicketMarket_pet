@@ -25,14 +25,14 @@ public class Event {
     private UUID eventID;
 
     @OneToMany
-    @JoinColumn(name = "event_id")
+    @JoinColumn(name = "concert_id")
     private List<Concert> listOfConcerts;
 
     @Column(name = "event_type")
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private EventType eventType;
 
-    @Column(name = "name")
+    @Column(name = "event_name")
     private String name;
 
     @Column(name = "description")

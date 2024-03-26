@@ -1,6 +1,3 @@
--- liquibase formatted sql
-
--- changeset 6ezdar:1
 CREATE TABLE IF NOT EXISTS users
 (
     user_id    binary(16) primary key not null,
@@ -67,7 +64,7 @@ CREATE TABLE IF NOT EXISTS events
 CREATE TABLE IF NOT EXISTS orders
 (
     order_id       binary(16) primary key not null,
-    client_id      binary(16)            not null,
+    client_id      varchar(32)            not null,
     order_cost     integer                not null,
     promo_code     binary(16),
     payment_method varchar(32),
@@ -96,17 +93,11 @@ CREATE TABLE IF NOT EXISTS authorities
 CREATE TABLE IF NOT EXISTS user_role
 (
     user_id binary(16) NOT NULL,
-    role_id binary(16) NOT NULL,
-    PRIMARY KEY (user_id, role_id),
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
-    FOREIGN KEY (role_id) REFERENCES roles (role_id)
+    role_id binary(16) NOT NULL
 );
 
-CREATE TABLE role_authority
+CREATE TABLE IF NOT EXISTS role_authority
 (
     role_id      binary(16) NOT NULL,
-    authority_id binary(16) NOT NULL,
-    PRIMARY KEY (role_id, authority_id),
-    FOREIGN KEY (role_id) REFERENCES roles (role_id),
-    FOREIGN KEY (authority_id) REFERENCES authorities (authority_id)
+    authority_id binary(16) NOT NULL
 );

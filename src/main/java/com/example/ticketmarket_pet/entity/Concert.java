@@ -1,6 +1,5 @@
 package com.example.ticketmarket_pet.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +25,7 @@ public class Concert {
     private String concertName;
 
     @OneToMany
-    @JoinColumn(name = "concert_id")
+    @JoinColumn(name = "artist_id")
     private List<Artist> listOfArtists;
 
 

@@ -38,10 +38,11 @@ public class Order {
     private PromoCode promocode;
 
     @OneToMany
-    @JoinColumn(name = "order_id")
+    @JoinColumn(name = "ticket_id")
     private List<Ticket> selectedTickets;
 
     @Column(name = "payment_method")
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
     @Column(name = "currency_code")
