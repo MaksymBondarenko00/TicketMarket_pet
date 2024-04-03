@@ -41,6 +41,9 @@ public class Concert {
     @Column(name = "tickets_count")
     private int countOfTickets;
 
+    @Column(name = "date", nullable = false)
+    private Date date;
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

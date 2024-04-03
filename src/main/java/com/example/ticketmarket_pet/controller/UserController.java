@@ -1,10 +1,16 @@
 package com.example.ticketmarket_pet.controller;
 
 import com.example.ticketmarket_pet.entity.*;
+import com.example.ticketmarket_pet.services.interfaces.UserInfoServices;
 import com.example.ticketmarket_pet.services.interfaces.UserServices;
+import com.example.ticketmarket_pet.validation.anotation.Uuid;
+import jakarta.transaction.Transactional;
+import jdk.jfr.ContentType;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.lang.NonNullApi;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -13,10 +19,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
+@Validated
 @RestController
 @RequestMapping("/user")
 @RequiredArgsConstructor
-class UserController {
+public class UserController {
 
     private final UserServices userServices;
 
@@ -31,20 +38,9 @@ class UserController {
         return userServices.getUserByName(firstName, lastName);
     }
 
-//    @PostMapping
-//    public void createNewUser(
-//            @RequestParam(name = "id") UUID id,
-//            @RequestParam(name = "firstName") String firstName,
-//            @RequestParam(name = "lastName") String lastName,
-////            @RequestParam(name = "userTickets") List<Ticket> userTickets,
-////            @RequestParam(name = "userOrders") List<Order> userOrders,
-//            @RequestParam(name = "userInfo") UserInfo userInfo,
-//            @RequestParam(name = "roles") Set<Role> roles,
-//            @RequestParam(name = "isBlocked") boolean isBlocked,
-//            @RequestParam(name = "createdAt") Timestamp createdAt) {
-//userServices.createUser(id, firstName, lastName, createdAt, userInfo, roles, isBlocked);
-////        return (new ResponseEntity<>(new User(id, firstName, lastName, userTickets, userOrders, createdAt, userInfo, roles, isBlocked), HttpStatus.CREATED)).getBody();
+//    @Transactional
+//    @PostMapping("/create")
+//    public User createNewUser(@RequestBody User user){
+//        return userServices.createUser(user);
 //    }
-
-
 }

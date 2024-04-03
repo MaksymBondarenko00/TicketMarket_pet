@@ -1,5 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
+import com.example.ticketmarket_pet.repository.UserInfoRepository;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Objects;
+import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -41,6 +43,14 @@ public class UserInfo {
 
     @Column(name = "password")
     private String password;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+
 
     @Override
     public boolean equals(Object o) {

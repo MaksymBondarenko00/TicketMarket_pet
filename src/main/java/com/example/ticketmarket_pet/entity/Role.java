@@ -27,7 +27,7 @@ public class Role {
 
     @ManyToMany(mappedBy = "roles")
     @JsonBackReference
-    private Set<User> users;
+    private Set<UserInfo> users;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "role_authority",

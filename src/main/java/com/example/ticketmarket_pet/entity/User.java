@@ -1,5 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -10,7 +11,6 @@ import lombok.Setter;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 import java.util.UUID;
 
 @AllArgsConstructor
@@ -31,6 +31,13 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
+    @Column(name = "created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Timestamp createdAt;
+
+    @Column(name = "is_blocked")
+    private boolean isBlocked;
+
     @OneToMany(mappedBy = "participant")
     @JsonIgnore
     private List<Ticket> userTickets;
@@ -39,21 +46,9 @@ public class User {
     @JsonIgnore
     private List<Order> orders;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
-
-    @OneToOne
-    @JoinColumn(name = "user_id")
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_info", referencedColumnName = "user_info_id")
     private UserInfo userInfo;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
-
-    @Column(name = "is_blocked")
-    private boolean isBlocked;
 
     @Override
     public boolean equals(Object o) {

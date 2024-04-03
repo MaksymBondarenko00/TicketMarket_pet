@@ -1,12 +1,17 @@
 package com.example.ticketmarket_pet.services.interfaces.impl;
 
 import com.example.ticketmarket_pet.entity.*;
+import com.example.ticketmarket_pet.repository.UserInfoRepository;
 import com.example.ticketmarket_pet.repository.UserRepository;
+import com.example.ticketmarket_pet.services.interfaces.UserInfoServices;
 import com.example.ticketmarket_pet.services.interfaces.UserServices;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.NoSuchElementException;
+import java.util.Set;
 import java.util.UUID;
 
 @Service
@@ -14,7 +19,7 @@ import java.util.UUID;
 public class UserServicesImpl implements UserServices {
 
     private final UserRepository userRepository;
-//    private final UserInfoRepository userInfoRepository;
+    private final UserInfoRepository userInfoRepository;
 
     @Override
     public User getUserById(String id) {
@@ -29,28 +34,9 @@ public class UserServicesImpl implements UserServices {
     }
 
 //    @Override
-//    public void createUser(UUID id, String firstName, String lastName, Timestamp createdAt, UserInfo userInfo, Set<Role> roles, boolean isBlocked) {
-//        User user = new User();
-//        user.setUserID(id);
-//        user.setFirstName(firstName);
-//        user.setLastName(lastName);
-////        user.setUserTickets(userTickets);
-////        user.setOrders(userOrders);
-//        user.setUserInfo(userInfo);
-//        user.setRoles(roles);
-//        user.setBlocked(isBlocked);
-//        user.setCreatedAt(createdAt);
-//
-//        userRepository.createUser(id, firstName, lastName, createdAt, userInfo, roles, isBlocked);
-//    }
-
-//    @Override
-//    @Transactional
-//    public void createUser(UUID id, String firstName, String lastName, Timestamp createdAt, UserInfo userInfo, Set<Role> roles, boolean isBlocked) {
-//        // Сохраняем UserInfo
-//        userInfoRepository.save(userInfo);
-//
-//        // Сохраняем User с ссылкой на сохраненный UserInfo
-//        userRepository.createUser(id, firstName, lastName, createdAt, userInfo, roles ,isBlocked);
+//    public User createUser(User user) {
+//        UserInfo userInfo = user.getUserInfo();
+//        userInfoRepository.saveAndFlush(userInfo);
+//        return userRepository.saveAndFlush(user);
 //    }
 }

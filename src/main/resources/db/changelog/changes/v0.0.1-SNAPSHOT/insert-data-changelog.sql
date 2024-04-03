@@ -15,18 +15,15 @@ values (UNHEX('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0'), 'Artist1', 'BAND'),
        (UNHEX('f0e1d2c3b4a5b6c7d8e9f0a1b2c3d4'), 'Artist4', 'BAND'),
        (UNHEX('1234567890abcdef1234567890abcdef'), 'Artist5', 'BAND');
 
-insert into concerts(concert_id, concert_name, country, city, address,
-                     tickets_count)
-values (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'USA', 'New York',
-        '123 Broadway', 1000),
-       (UNHEX('4fd672f8fb8e4249b723aa1850be5f6d'), 'Concert2', 'Canada', 'Toronto',
-        '456 King St', 800),
-       (UNHEX('31dc5fa1e7c84f0a84a91414fc7f8f69'), 'Concert3', 'UK', 'London',
-        '789 Oxford St', 1200),
-       (UNHEX('e4f8ed9e3c5f476d8cb75cddcf8c24d2'), 'Concert4', 'Australia', 'Sydney',
-        '101 George St', 1500),
-       (UNHEX('93ae1eaa65094d46b41f2a73e92d1e37'), 'Concert5', 'Germany', 'Berlin',
-        '202 Alexanderplatz', 900);
+INSERT INTO concerts (concert_id, concert_name, country, city, address, tickets_count, date)
+VALUES (UNHEX('ea7d23ec91f34b6c9692e3d1dc51d7fb'), 'Concert1', 'USA', 'New York', '123 Broadway', 1000, '2024-03-10'),
+       (UNHEX('4fd672f8fb8e4249b723aa1850be5f6d'), 'Concert2', 'Canada', 'Toronto', '456 King St', 800, '2026-06-25'),
+       (UNHEX('31dc5fa1e7c84f0a84a91414fc7f8f69'), 'Concert3', 'UK', 'London', '789 Oxford St', 1200, '2024-09-05'),
+       (UNHEX('e4f8ed9e3c5f476d8cb75cddcf8c24d2'), 'Concert4', 'Australia', 'Sydney', '101 George St', 1500,
+        '2026-11-18'),
+       (UNHEX('93ae1eaa65094d46b41f2a73e92d1e37'), 'Concert5', 'Germany', 'Berlin', '202 Alexander plats', 900,
+        '2025-04-07');
+
 
 insert into events(event_id, event_name, event_type, description, created_at)
 values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'SPECIAL_EVENT', 'Description for Concert1', NOW()),
@@ -35,34 +32,42 @@ values (UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'), 'Concert1', 'SPECIAL_EVENT', 
        (UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'), 'Concert4', 'FESTIVAL', 'Description for Concert4', NOW()),
        (UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'), 'Concert5', 'SPORT', 'Description for Concert5', NOW());
 
-insert into users(user_id, first_name, last_name, user_info, role, is_blocked, created_at)
+insert into users(user_id, first_name, last_name, user_info, is_blocked, created_at)
 values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'),
-        UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 0, NOW()),
+        0, NOW()),
        (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Jane', 'Smith', UNHEX('6f8202f6b9034cc789aeb332b2d23de5'),
-        UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 0, NOW()),
+        0, NOW()),
        (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'Alice', 'Johnson', UNHEX('7c9dca5ffea343d39e8595e5f6abf862'),
-        UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 1, NOW()),
+        1, NOW()),
        (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Bob', 'Brown', UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'),
-        UNHEX('16e05517895b448d84d0eb179af1db3d'), 0, NOW()),
+        0, NOW()),
        (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Emma', 'Davis', UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'),
-        UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 1, NOW());
+        1, NOW());
 
-insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number)
+-- Вставка ролей
+INSERT INTO roles (role_id, role_name)
+VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 'ROLE_USER'),
+       (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'ROLE_ADMIN'),
+       (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_ADMIN'),
+       (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_ADMIN'),
+       (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_ADMIN');
+
+insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number, role)
 values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'USA',
         'New York', 'password123', 'john@example.com',
-        '123-456-7890', '1234-5678-9012-3456'),
+        '123-456-7890', '1234-5678-9012-3456', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')),
        (UNHEX('6f8202f6b9034cc789aeb332b2d23de5'), 'jane_smith', UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Canada',
         'Toronto', 'qwerty456', 'jane@example.com',
-        '987-654-3210', '9876-5432-1098-7654'),
+        '987-654-3210', '9876-5432-1098-7654', UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')),
        (UNHEX('7c9dca5ffea343d39e8595e5f6abf862'), 'alice_johnson', UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'UK',
         'London', 'myp@ssw0rd', 'alice@example.com',
-        '456-789-0123', '4567-8901-2345-6789'),
+        '456-789-0123', '4567-8901-2345-6789', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a')),
        (UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'), 'bob_brown', UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Australia',
         'Sydney', 'securepass', 'bob@example.com',
-        '789-012-3456', '7890-1234-5678-9012'),
+        '789-012-3456', '7890-1234-5678-9012', UNHEX('16e05517895b448d84d0eb179af1db3d')),
        (UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'), 'emma_davis', UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Germany',
         'Berlin', 'pass1234', 'emma@example.com',
-        '012-345-6789', '0123-4567-8901-2345');
+        '012-345-6789', '0123-4567-8901-2345', UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'));
 
 insert into tickets(ticket_id, event_id, user_id, price, service_payments, area_type, has_bought, created_at)
 values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'),
@@ -93,17 +98,6 @@ values (UNHEX('70f8a1dc8f914f24bc3aa9bb29292482'), UNHEX('d0674b2978a34ac3bd6f96
         UNHEX('e80f9a3151564a31b79f229f47c2d4a8'), 'GOOGLE_PAY', 'EUR',
         NOW());
 
--- Вставка ролей
-INSERT INTO roles (role_id, role_name)
-VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 'ROLE_USER');
-INSERT INTO roles (role_id, role_name)
-VALUES (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'ROLE_ADMIN');
-INSERT INTO roles (role_id, role_name)
-VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_ADMIN');
-INSERT INTO roles (role_id, role_name)
-VALUES (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_ADMIN');
-INSERT INTO roles (role_id, role_name)
-VALUES (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_ADMIN');
 
 -- Вставка прав
 INSERT INTO authorities (authority_id, authority_name)
