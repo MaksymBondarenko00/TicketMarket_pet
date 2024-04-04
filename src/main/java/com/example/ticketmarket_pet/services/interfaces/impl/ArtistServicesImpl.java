@@ -18,4 +18,10 @@ public class ArtistServicesImpl implements ArtistServices {
     public Artist getArtistById(String id) {
         return(artistRepository.findArtistByArtistID(UUID.fromString(id)));
     }
+
+    @Override
+    public void deleteArtist(UUID id) {
+        Artist artist = getArtistById(String.valueOf(id));
+        artistRepository.delete(artist);
+    }
 }

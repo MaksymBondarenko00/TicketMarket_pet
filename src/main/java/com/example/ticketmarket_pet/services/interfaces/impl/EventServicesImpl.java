@@ -24,4 +24,9 @@ public class EventServicesImpl implements EventServices {
     public List<Event> findEventByType(EventType type) {
         return eventRepository.getEventsByEventType(type);
     }
+
+    @Override
+    public Event createEvent(Event event) {
+        return eventRepository.saveAndFlush(event);
+    }
 }

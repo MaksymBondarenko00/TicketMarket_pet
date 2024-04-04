@@ -8,4 +8,5 @@ import java.util.UUID;
 public interface ConcertServices {
     Concert getConcertByConcertID(UUID id);
     List<Concert> getListOfConcertByCountry(String country);
+    Concert updateConcert(UUID concertId);
 }

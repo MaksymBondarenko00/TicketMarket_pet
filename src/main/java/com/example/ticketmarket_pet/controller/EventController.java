@@ -4,12 +4,13 @@ import com.example.ticketmarket_pet.entity.Event;
 import com.example.ticketmarket_pet.entity.enums.EventType;
 import com.example.ticketmarket_pet.services.interfaces.EventServices;
 import com.example.ticketmarket_pet.validation.anotation.Uuid;
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -19,6 +20,8 @@ import java.util.UUID;
 @RequestMapping("/event")
 @RequiredArgsConstructor
 public class EventController {
+
+
     private final EventServices eventServices;
 
     @GetMapping("/get_event/{id}")
@@ -29,5 +32,11 @@ public class EventController {
     @GetMapping("/by_type/{type}")
     public List<Event> getEventsByType(@PathVariable(name = "type") EventType type){
         return eventServices.findEventByType(type);
+    }
+
+    @Transactional
+    @PostMapping("/create")
+    public Event createEvent(@RequestBody Event event){
+        return eventServices.createEvent(event);
     }
 }

@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.services.interfaces.impl;
 
 import com.example.ticketmarket_pet.entity.Ticket;
+import com.example.ticketmarket_pet.entity.User;
 import com.example.ticketmarket_pet.entity.enums.AreaType;
 import com.example.ticketmarket_pet.repository.TicketRepository;
 import com.example.ticketmarket_pet.services.interfaces.TicketServices;
@@ -24,4 +25,6 @@ public class TicketServicesImpl implements TicketServices {
     public List<Ticket> getTicketsByAreaType(AreaType type) {
         return repository.getTicketsByAreaType(type);
     }
+
+
 }

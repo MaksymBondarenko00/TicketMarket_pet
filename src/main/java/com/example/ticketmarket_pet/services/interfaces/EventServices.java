@@ -9,4 +9,5 @@ import java.util.UUID;
 public interface EventServices {
     Event findEventById(UUID id);
     List<Event> findEventByType(EventType type);
+    Event createEvent(Event event);
 }

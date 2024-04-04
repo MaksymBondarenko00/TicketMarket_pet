@@ -73,7 +73,7 @@ insert into tickets(ticket_id, event_id, user_id, price, service_payments, area_
 values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'),
         UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 50.00, 5.00, 'VIP', 1, NOW()),
        (UNHEX('b507b72c49b94b1098f5eac4d30ac9a5'), UNHEX('3e6cb2092b1b46f8b9ad3ac24c9a9df4'),
-        UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 30.00, 3.00, 'SEAT', 1, NOW()),
+        null, 30.00, 3.00, 'SEAT', null, NOW()),
        (UNHEX('1a4fe3d4cf7a49e39c8e13d93e089fc9'), UNHEX('8d36a4d0e9c24c15a0445bc356f7adfb'),
         UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 20.00, 2.00, 'STANDING_AREA', 1, NOW()),
        (UNHEX('6f0f7dd005ed40c59f315ef41a2f0fb7'), UNHEX('7c3cfb5bf3db4ec3942e6d0c1e678239'),

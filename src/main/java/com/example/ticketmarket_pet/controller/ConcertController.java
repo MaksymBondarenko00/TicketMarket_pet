@@ -4,11 +4,9 @@ import com.example.ticketmarket_pet.entity.Concert;
 import com.example.ticketmarket_pet.services.interfaces.ConcertServices;
 import com.example.ticketmarket_pet.validation.anotation.Uuid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.UUID;
@@ -28,5 +26,11 @@ public class ConcertController {
     @GetMapping("/in_country/{country}")
     public List<Concert> findConcertById(@PathVariable(name = "country") String country) {
         return concertServices.getListOfConcertByCountry(country);
+    }
+
+    @PutMapping("/update/{concertId}")
+    public ResponseEntity<String> updateConcert(@PathVariable(name = "concertId") UUID concertId){
+        concertServices.updateConcert(concertId);
+        return ResponseEntity.ok("***Updated successfully!***");
     }
 }

@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.EventType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
@@ -37,6 +39,10 @@ public class Event {
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    private Timestamp createdAt;
 
     @Override
     public boolean equals(Object o) {
