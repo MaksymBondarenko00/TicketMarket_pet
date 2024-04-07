@@ -13,13 +13,17 @@ VALUES (CAST('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0' AS BINARY(16)), 'Artist1', 'BAND
        (CAST('1234567890abcdef1234567890abcdef' AS BINARY(16)), 'Artist5', 'BAND');
 
 INSERT INTO concerts(concert_id, concert_name, country, city, address, tickets_count, date)
-VALUES (CAST('ea7d23ec91f34b6c9692e3d1dc51d7fb' AS BINARY(16)), 'Concert1', 'USA', 'New York', '123 Broadway', 1000, '10.03.2024'),
-       (CAST('4fd672f8fb8e4249b723aa1850be5f6d' AS BINARY(16)), 'Concert2', 'Canada', 'Toronto', '456 King St', 800, '25.06.2025'),
-       (CAST('31dc5fa1e7c84f0a84a91414fc7f8f69' AS BINARY(16)), 'Concert3', 'UK', 'London', '789 Oxford St', 1200, '05.09.2025'),
+VALUES (CAST('ea7d23ec91f34b6c9692e3d1dc51d7fb' AS BINARY(16)), 'Concert1', 'USA', 'New York', '123 Broadway', 1000,
+        '2024-03-10'),
+       (CAST('4fd672f8fb8e4249b723aa1850be5f6d' AS BINARY(16)), 'Concert2', 'Canada', 'Toronto', '456 King St', 800,
+        '2025-06-25'),
+       (CAST('31dc5fa1e7c84f0a84a91414fc7f8f69' AS BINARY(16)), 'Concert3', 'UK', 'London', '789 Oxford St', 1200,
+        '2025-09-05'),
        (CAST('e4f8ed9e3c5f476d8cb75cddcf8c24d2' AS BINARY(16)), 'Concert4', 'Australia', 'Sydney', '101 George St',
-        1500, '18.11.2022'),
+        1500, '2022-11-18'),
        (CAST('93ae1eaa65094d46b41f2a73e92d1e37' AS BINARY(16)), 'Concert5', 'Germany', 'Berlin', '202 Alexander plats',
-        900, '07.04.2026');
+        900, '2026-04-07');
+
 
 INSERT INTO events(event_id, event_name, event_type, description, created_at)
 VALUES (CAST('9aef7bfc0bfb495a97a44a2f42f7e43d' AS BINARY(16)), 'Concert1', 'SPECIAL_EVENT', 'Description for Concert1',

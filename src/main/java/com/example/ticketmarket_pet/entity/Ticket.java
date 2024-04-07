@@ -1,6 +1,7 @@
 package com.example.ticketmarket_pet.entity;
 
 import com.example.ticketmarket_pet.entity.enums.AreaType;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -26,7 +27,7 @@ public class Ticket {
 
     @OneToOne
     @JoinColumn(name = "event_id")
-    private Event eventID;
+    private Event event;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -46,6 +47,7 @@ public class Ticket {
     private boolean hasBought;
 
     @Column(name = "created_at")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Timestamp createdAt;
 
     @Override
@@ -53,19 +55,19 @@ public class Ticket {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Ticket ticket = (Ticket) o;
-        return Objects.equals(tickerID, ticket.tickerID) && Objects.equals(eventID, ticket.eventID) && Objects.equals(price, ticket.price) && areaType == ticket.areaType;
+        return Objects.equals(tickerID, ticket.tickerID) && Objects.equals(event, ticket.event) && Objects.equals(price, ticket.price) && areaType == ticket.areaType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tickerID, eventID, price, areaType);
+        return Objects.hash(tickerID, event, price, areaType);
     }
 
     @Override
     public String toString() {
         return "Ticket{" +
                 "tickerID=" + tickerID +
-                ", eventID=" + eventID +
+                ", eventID=" + event +
                 ", price=" + price +
                 ", typeOfArea=" + areaType +
                 '}';

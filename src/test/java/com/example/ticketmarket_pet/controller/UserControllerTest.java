@@ -34,18 +34,48 @@ public class UserControllerTest {
     @Autowired
     private ObjectMapper objectMapper;
 
-    User excepted = new User();
+    User exceptedUser = new User();
     {
-        excepted.setUserID(UUID.fromString("64303637-3462-3239-3738-613334616333"));
-        excepted.setUserInfo(new UserInfo(UUID.fromString("65396466-3431-3231-6536-383334623464"), "john_doe", "john@example.com", "123-456-7890", "1234-5678-9012-3456", "USA", "New York", "password123", new HashSet<>()));
-        excepted.setBlocked(false);
-        excepted.setCreatedAt(new Timestamp(System.currentTimeMillis()));
-        excepted.setFirstName("John");
-        excepted.setLastName("Doe");
+        exceptedUser.setUserID(UUID.fromString("64303637-3462-3239-3738-613334616333"));
+        exceptedUser.setUserInfo(new UserInfo(UUID.fromString("65396466-3431-3231-6536-383334623464"), "john_doe", "john@example.com", "123-456-7890", "1234-5678-9012-3456", "USA", "New York", "password123", new HashSet<>()));
+        exceptedUser.setBlocked(false);
+        exceptedUser.setCreatedAt(new Timestamp(System.currentTimeMillis()));
+        exceptedUser.setFirstName("John");
+        exceptedUser.setLastName("Doe");
+    }
+
+    UserInfo expectedInfo = new UserInfo();
+
+    {
+        expectedInfo.setUserInfoId(UUID.fromString("37633964-6361-3566-6665-613334336433"));
+        expectedInfo.setUsername("alice_johnson");
+        expectedInfo.setCountry("UK");
+        expectedInfo.setCity("London");
+        expectedInfo.setEmail("alice@example.com");
+        expectedInfo.setPassword("myp@ssw0rd");
+        expectedInfo.setPhoneNumber("456-789-0123");
+        expectedInfo.setCardNumber("4567-8901-2345-6789");
+        expectedInfo.setRoles(new HashSet<>());
+    }
+
+    @Test
+    void showInfoByUsername() throws Exception {
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders.get("/user/showUserInfo/alice_johnson")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andReturn();
+
+        String userInfoResultJson = mvcResult.getResponse().getContentAsString();
+        UserInfo actual = objectMapper.readValue(userInfoResultJson, UserInfo.class);
+
+        Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
+        Assertions.assertEquals(expectedInfo, actual);
+
     }
     @Test
     void showUserById() throws Exception {
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user/showUser/64303637-3462-3239-3738-613334616333")
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders.get("/user/showUser/64303637-3462-3239-3738-613334616333")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -53,11 +83,12 @@ public class UserControllerTest {
         User actual = objectMapper.readValue(userResultJson, User.class);
 
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-        Assertions.assertEquals(excepted, actual);
+        Assertions.assertEquals(exceptedUser, actual);
     }
     @Test
     void showUserByName() throws Exception{
-        MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/user/showUser/John/Doe")
+        MvcResult mvcResult = mockMvc
+                .perform(MockMvcRequestBuilders.get("/user/showUser/John/Doe")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
@@ -65,6 +96,6 @@ public class UserControllerTest {
         User actual = objectMapper.readValue(userResultJson, User.class);
 
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-        Assertions.assertEquals(excepted, actual);
+        Assertions.assertEquals(exceptedUser, actual);
     }
 }

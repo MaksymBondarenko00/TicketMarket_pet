@@ -28,8 +28,7 @@ public class Concert {
     @JoinColumn(name = "artist_id")
     private List<Artist> listOfArtists;
 
-
-    @Column(name = "country" )
+    @Column(name = "country")
     private String country;
 
     @Column(name = "city")

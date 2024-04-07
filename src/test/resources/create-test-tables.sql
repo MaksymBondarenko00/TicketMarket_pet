@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS user_info
 CREATE TABLE IF NOT EXISTS tickets
 (
     ticket_id        binary(16) primary key not null,
-    event_id         binary(16)            not null,
+    event_id         binary(16)             not null,
     user_id          binary(16),
     price            double                 not null,
     service_payments double,
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS concerts
     city          varchar(32)            not null,
     address       varchar(64)            not null,
     tickets_count integer                not null,
-    date          date            not null
+    date          date                   not null
 );
 
 CREATE TABLE IF NOT EXISTS artists

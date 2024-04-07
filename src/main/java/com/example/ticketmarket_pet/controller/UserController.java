@@ -1,22 +1,18 @@
 package com.example.ticketmarket_pet.controller;
 
+import com.example.ticketmarket_pet.dto.UserDto;
+import com.example.ticketmarket_pet.dto.UserInfoDto;
 import com.example.ticketmarket_pet.entity.*;
-import com.example.ticketmarket_pet.services.interfaces.UserInfoServices;
 import com.example.ticketmarket_pet.services.interfaces.UserServices;
-import com.example.ticketmarket_pet.validation.anotation.Uuid;
-import jakarta.transaction.Transactional;
-import jdk.jfr.ContentType;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.lang.NonNullApi;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
-import java.sql.Timestamp;
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 @Validated
@@ -28,14 +24,49 @@ public class UserController {
     private final UserServices userServices;
 
     @GetMapping("/showUser/{id}")
-    public User showUserById(@PathVariable(name = "id") String id) {
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Request user by UUID", description = "Getting user by UUID")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successfully returned user",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDto.class))
+            })
+    public UserDto showUserById(@PathVariable(name = "id") UUID id) {
         return userServices.getUserById(id);
     }
 
     @GetMapping("/showUser/{firstName}/{lastName}")
-    public User showUserByName(@PathVariable(name = "firstName") String firstName,
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Request user by name", description = "Getting user by name")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successfully returned user",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDto.class))
+            })
+    public UserDto showUserByName(@PathVariable(name = "firstName") String firstName,
                                @PathVariable(name = "lastName") String lastName) {
         return userServices.getUserByName(firstName, lastName);
+    }
+
+    @GetMapping("/showUserInfo/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Request user by username", description = "Getting user by username")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successfully returned user",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDto.class))
+            })
+    public UserInfoDto showInfoByUsername(@PathVariable(name = "username") String username) {
+        return userServices.getInfoByUsername(username);
     }
 
 //    @Transactional
