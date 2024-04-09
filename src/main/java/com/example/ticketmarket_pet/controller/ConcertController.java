@@ -24,7 +24,7 @@ public class ConcertController {
     }
 
     @GetMapping("/in_country/{country}")
-    public List<Concert> findConcertById(@PathVariable(name = "country") String country) {
+    public List<Concert> findConcertByCountry(@PathVariable(name = "country") String country) {
         return concertServices.getListOfConcertByCountry(country);
     }
 

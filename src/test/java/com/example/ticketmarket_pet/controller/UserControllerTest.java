@@ -26,7 +26,7 @@ import java.util.UUID;
 @Sql("/drop-test-tables.sql")
 @Sql("/create-test-tables.sql")
 @Sql("/insert-data-test-changelog.sql")
-public class UserControllerTest {
+class UserControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

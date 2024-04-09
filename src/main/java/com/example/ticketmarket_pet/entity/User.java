@@ -32,7 +32,6 @@ public class User {
     private String lastName;
 
     @Column(name = "created_at")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Timestamp createdAt;
 
     @Column(name = "is_blocked")

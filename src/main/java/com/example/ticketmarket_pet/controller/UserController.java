@@ -25,7 +25,7 @@ public class UserController {
 
     @GetMapping("/showUser/{id}")
     @ResponseStatus(HttpStatus.OK)
-    @Operation(summary = "Request user by UUID", description = "Getting user by UUID")
+    @Operation(summary = "Request user by UUID", description = "Getting user by UUID", tags = "USERS")
     @ApiResponse(
             responseCode = "200",
             description = "Successfully returned user",

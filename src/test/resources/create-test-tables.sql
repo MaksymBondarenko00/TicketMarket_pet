@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS events
 CREATE TABLE IF NOT EXISTS orders
 (
     order_id       binary(16) primary key not null,
-    client_id      varchar(32)            not null,
+    client_id      binary(16)            not null,
     order_cost     integer                not null,
     promo_code     binary(16),
     payment_method varchar(32),

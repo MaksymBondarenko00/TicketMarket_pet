@@ -10,6 +10,7 @@ import lombok.Setter;
 
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
@@ -49,19 +50,19 @@ public class Order {
     private String currencyCode;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private Timestamp createdAt;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Order order = (Order) o;
-        return Objects.equals(orderId, order.orderId) && Objects.equals(orderCost, order.orderCost) && Objects.equals(createdAt, order.createdAt);
+        return Objects.equals(orderId, order.orderId) && Objects.equals(orderCost, order.orderCost);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(orderId, orderCost, createdAt);
+        return Objects.hash(orderId, orderCost);
     }
 
     @Override

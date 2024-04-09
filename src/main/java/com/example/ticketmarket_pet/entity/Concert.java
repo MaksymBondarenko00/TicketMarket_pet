@@ -1,5 +1,6 @@
 package com.example.ticketmarket_pet.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -40,6 +41,7 @@ public class Concert {
     @Column(name = "tickets_count")
     private int countOfTickets;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "date", nullable = false)
     private Date date;
 
@@ -66,4 +68,5 @@ public class Concert {
                 ", address='" + address + '\'' +
                 '}';
     }
+
 }

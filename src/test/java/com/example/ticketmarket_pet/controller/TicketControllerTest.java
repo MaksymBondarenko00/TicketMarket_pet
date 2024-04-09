@@ -29,7 +29,7 @@ import java.util.UUID;
 @Sql("/drop-test-tables.sql")
 @Sql("/create-test-tables.sql")
 @Sql("/insert-data-test-changelog.sql")
-public class TicketControllerTest {
+class TicketControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
