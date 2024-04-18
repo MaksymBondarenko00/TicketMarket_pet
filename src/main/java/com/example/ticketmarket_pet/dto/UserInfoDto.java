@@ -1,21 +1,14 @@
 package com.example.ticketmarket_pet.dto;
 
-import com.example.ticketmarket_pet.entity.Role;
-import jakarta.persistence.Transient;
-import jakarta.transaction.Transactional;
-import lombok.Value;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
-import java.util.Set;
-import java.util.UUID;
-
-@Value
+@RequiredArgsConstructor
+@Data
 public class UserInfoDto {
-    UUID userInfoId;
     String username;
     String email;
     String phoneNumber;
-    String cardNumber;
     String country;
     String city;
-    String password;
 }

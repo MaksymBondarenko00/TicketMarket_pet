@@ -47,13 +47,12 @@ CREATE TABLE IF NOT EXISTS tickets
 
 CREATE TABLE IF NOT EXISTS concerts
 (
-    concert_id    binary(16) primary key not null,
-    concert_name  varchar(64)            not null,
-    country       varchar(32)            not null,
-    city          varchar(32)            not null,
-    address       varchar(64)            not null,
-    tickets_count integer                not null,
-    date          date                   not null
+    concert_id   binary(16) primary key not null,
+    concert_name varchar(64)            not null,
+    country      varchar(32)            not null,
+    city         varchar(32)            not null,
+    address      varchar(64)            not null,
+    date         date                   not null
 );
 
 CREATE TABLE IF NOT EXISTS artists
@@ -66,11 +65,12 @@ CREATE TABLE IF NOT EXISTS artists
 
 CREATE TABLE IF NOT EXISTS events
 (
-    event_id    binary(16) primary key not null,
-    event_name  varchar(64)            not null,
-    event_type  varchar(64)            not null,
-    description text                   not null,
-    created_at  varchar(32)            not null
+    event_id      binary(16) primary key not null,
+    event_name    varchar(64)            not null,
+    event_type    varchar(64)            not null,
+    description   text                   not null,
+    created_at    varchar(32)            not null,
+    tickets_count integer                not null
 );
 
 CREATE TABLE IF NOT EXISTS orders

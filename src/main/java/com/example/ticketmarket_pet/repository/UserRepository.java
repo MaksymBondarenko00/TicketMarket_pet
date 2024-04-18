@@ -14,7 +14,7 @@ import java.util.UUID;
 @Repository
 
 public interface UserRepository extends JpaRepository<User, UUID> {
-    UserDto findByUserID(UUID id);
-
-    UserDto findByFirstNameAndLastName(String firstName, String lastName);
+//    UserDto findByUserID(UUID userID);
+//
+    User findByFirstNameAndLastName(String firstName, String lastName);
 }

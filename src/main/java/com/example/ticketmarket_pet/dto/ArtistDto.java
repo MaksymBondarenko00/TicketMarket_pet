@@ -8,5 +8,5 @@ import lombok.Value;
 public class ArtistDto {
     String artistID;
     String name;
-    ArtistRole role;
+    String role;
 }

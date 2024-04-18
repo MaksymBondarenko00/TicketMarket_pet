@@ -25,6 +25,19 @@ public class Ticket {
     @Column(name = "ticket_id")
     private UUID tickerID;
 
+    @Column(name = "price")
+    private BigDecimal price;
+
+    @Column(name = "service_payments")
+    private BigDecimal servicePayments;
+
+    @Column(name = "has_bought")
+    private boolean hasBought;
+
+    @Column(name = "area_type")
+    @Enumerated(EnumType.STRING)
+    private AreaType areaType;
+
     @OneToOne
     @JoinColumn(name = "event_id")
     private Event event;
@@ -32,19 +45,6 @@ public class Ticket {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User participant;
-
-    @Column(name = "price")
-    private BigDecimal price;
-
-    @Column(name = "service_payments")
-    private BigDecimal servicePayments;
-
-    @Column(name = "area_type")
-    @Enumerated(EnumType.STRING)
-    private AreaType areaType;
-
-    @Column(name = "has_bought")
-    private boolean hasBought;
 
     @Column(name = "created_at")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")

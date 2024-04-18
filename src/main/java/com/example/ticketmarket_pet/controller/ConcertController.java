@@ -28,9 +28,5 @@ public class ConcertController {
         return concertServices.getListOfConcertByCountry(country);
     }
 
-    @PutMapping("/update/{concertId}")
-    public ResponseEntity<String> updateConcert(@PathVariable(name = "concertId") UUID concertId){
-        concertServices.updateConcert(concertId);
-        return ResponseEntity.ok("***Updated successfully!***");
-    }
+
 }

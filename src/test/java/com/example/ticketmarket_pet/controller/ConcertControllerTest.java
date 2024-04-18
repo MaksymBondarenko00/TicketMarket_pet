@@ -86,14 +86,13 @@ public class ConcertControllerTest {
     @Test
     void updateConcert() throws Exception {
         MvcResult mvcResult = mockMvc
-                .perform(MockMvcRequestBuilders.get("/concert/update/33316463-3566-6131-6537-633834663061")
+                .perform(MockMvcRequestBuilders.put("/concert/update/33316463-3566-6131-6537-633834663061")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andReturn();
 
-        String concertResultJson = mvcResult.getResponse().getContentAsString();
-        Concert actual = objectMapper.readValue(concertResultJson, Concert.class);
+        String responseContent = mvcResult.getResponse().getContentAsString();
 
-        Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
-        Assertions.assertEquals(expected, actual);
+        assert responseContent.equals("***Updated successfully!***");
     }
+
 }

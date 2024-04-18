@@ -1,5 +1,7 @@
 package com.example.ticketmarket_pet.controller;
 
+import com.example.ticketmarket_pet.dto.CreateEventDto;
+import com.example.ticketmarket_pet.dto.EventAfterCreatingDto;
 import com.example.ticketmarket_pet.entity.Event;
 import com.example.ticketmarket_pet.entity.enums.EventType;
 import com.example.ticketmarket_pet.services.interfaces.EventServices;
@@ -21,7 +23,6 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class EventController {
 
-
     private final EventServices eventServices;
 
     @GetMapping("/get_event/{id}")
@@ -34,9 +35,8 @@ public class EventController {
         return eventServices.findEventByType(type);
     }
 
-    @Transactional
     @PostMapping("/create")
-    public Event createEvent(@RequestBody Event event){
-        return eventServices.createEvent(event);
+    public EventAfterCreatingDto createEvent(@RequestBody CreateEventDto createEventDto){
+        return eventServices.createEvent(createEventDto);
     }
 }

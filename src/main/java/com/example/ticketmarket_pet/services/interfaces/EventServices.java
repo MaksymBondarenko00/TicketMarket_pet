@@ -1,5 +1,7 @@
 package com.example.ticketmarket_pet.services.interfaces;
 
+import com.example.ticketmarket_pet.dto.CreateEventDto;
+import com.example.ticketmarket_pet.dto.EventAfterCreatingDto;
 import com.example.ticketmarket_pet.entity.Event;
 import com.example.ticketmarket_pet.entity.enums.EventType;
 
@@ -8,6 +10,8 @@ import java.util.UUID;
 
 public interface EventServices {
     Event findEventById(UUID id);
+
     List<Event> findEventByType(EventType type);
-    Event createEvent(Event event);
+
+    EventAfterCreatingDto createEvent(CreateEventDto createEventDto);
 }

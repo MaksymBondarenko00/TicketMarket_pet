@@ -38,8 +38,6 @@ public class Concert {
     @Column(name = "address")
     private String address;
 
-    @Column(name = "tickets_count")
-    private int countOfTickets;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @Column(name = "date", nullable = false)
@@ -50,7 +48,7 @@ public class Concert {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Concert concert = (Concert) o;
-        return Objects.equals(concertID, concert.concertID) && Objects.equals(concertName, concert.concertName) && country == concert.country && city == concert.city;
+        return Objects.equals(concertID, concert.concertID) && Objects.equals(concertName, concert.concertName) && Objects.equals(country, concert.country) && Objects.equals(city, concert.city);
     }
 
     @Override

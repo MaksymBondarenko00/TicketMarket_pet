@@ -28,19 +28,8 @@ public class Order {
     @Column(name = "order_id")
     private UUID orderId;
 
-    @Column(name = "client_id")
-    private UUID clientID;
-
     @Column(name = "order_cost")
     private BigDecimal orderCost;
-
-    @OneToOne
-    @JoinColumn(name = "promo_code")
-    private PromoCode promocode;
-
-    @OneToMany
-    @JoinColumn(name = "ticket_id")
-    private List<Ticket> selectedTickets;
 
     @Column(name = "payment_method")
     @Enumerated(EnumType.STRING)
@@ -51,6 +40,18 @@ public class Order {
 
     @Column(name = "created_at")
     private Timestamp createdAt;
+
+    @OneToOne
+    @JoinColumn(name = "promo_code")
+    private PromoCode promocode;
+
+    @OneToMany
+    @JoinColumn(name = "ticket_id")
+    private List<Ticket> selectedTickets;
+
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private User clientID;
 
     @Override
     public boolean equals(Object o) {

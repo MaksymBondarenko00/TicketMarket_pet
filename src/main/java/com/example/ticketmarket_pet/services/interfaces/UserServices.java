@@ -8,12 +8,13 @@ import java.util.UUID;
 
 public interface UserServices {
     // --- get(read) request --- //
-    UserDto getUserById(UUID id);
+    UserDto getUserById(String id);
 
     UserDto getUserByName(String firstName, String lastName);
 
-    UserInfoDto getInfoByUsername(String username);
+    UserDto buyTicket(UUID ticketId, UUID userId);
 
+    UserInfoDto getInfoByUsername(String username);
 
     // --- post(create) request --- //
 //    User createUser(User user);

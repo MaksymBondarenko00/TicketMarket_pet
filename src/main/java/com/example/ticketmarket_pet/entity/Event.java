@@ -26,10 +26,6 @@ public class Event {
     @Column(name = "event_id")
     private UUID eventID;
 
-    @OneToMany
-    @JoinColumn(name = "concert_id")
-    private List<Concert> listOfConcerts;
-
     @Column(name = "event_type")
     @Enumerated(EnumType.STRING)
     private EventType eventType;
@@ -43,6 +39,13 @@ public class Event {
     @Column(name = "created_at")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Timestamp createdAt;
+
+    @Column(name = "tickets_count")
+    private int countOfTickets;
+
+    @OneToMany
+    @JoinColumn(name = "concert_id")
+    private List<Concert> listOfConcerts;
 
     @Override
     public boolean equals(Object o) {

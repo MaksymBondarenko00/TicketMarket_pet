@@ -8,12 +8,9 @@ import java.util.List;
 
 @Value
 public class ConcertDto {
-     String concertID;
      String concertName;
-     List<Artist> listOfArtists;
      String country;
      String city;
      String address;
-     int countOfTickets;
      Date date;
 }

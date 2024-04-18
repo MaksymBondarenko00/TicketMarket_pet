@@ -23,11 +23,6 @@ public class ConcertServicesImpl implements ConcertServices {
         return concertRepository.findConcertsByCountry(country);
     }
 
-    @Override
-    public Concert updateConcert(UUID concertId) {
-        Concert concert = getConcertByConcertID(concertId);
-        concert.setCountOfTickets(concert.getCountOfTickets() + 50);
-        return concertRepository.save(concert);
-    }
+
 
 }

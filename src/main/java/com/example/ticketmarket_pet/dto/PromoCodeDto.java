@@ -5,5 +5,5 @@ import lombok.Value;
 @Value
 public class PromoCodeDto {
     String promoId;
-    int discountPercentage;
+    String discountPercentage;
 }

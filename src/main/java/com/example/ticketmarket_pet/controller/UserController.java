@@ -2,7 +2,7 @@ package com.example.ticketmarket_pet.controller;
 
 import com.example.ticketmarket_pet.dto.UserDto;
 import com.example.ticketmarket_pet.dto.UserInfoDto;
-import com.example.ticketmarket_pet.entity.*;
+import com.example.ticketmarket_pet.entity.User;
 import com.example.ticketmarket_pet.services.interfaces.UserServices;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -34,7 +34,7 @@ public class UserController {
                             mediaType = "application/json",
                             schema = @Schema(implementation = UserDto.class))
             })
-    public UserDto showUserById(@PathVariable(name = "id") UUID id) {
+    public UserDto showUserById(@PathVariable(name = "id") String id) {
         return userServices.getUserById(id);
     }
 
@@ -50,7 +50,7 @@ public class UserController {
                             schema = @Schema(implementation = UserDto.class))
             })
     public UserDto showUserByName(@PathVariable(name = "firstName") String firstName,
-                               @PathVariable(name = "lastName") String lastName) {
+                                  @PathVariable(name = "lastName") String lastName) {
         return userServices.getUserByName(firstName, lastName);
     }
 
@@ -69,8 +69,22 @@ public class UserController {
         return userServices.getInfoByUsername(username);
     }
 
-//    @Transactional
-//    @PostMapping("/create")
+    @PutMapping("/{userId}/buyTicket/{ticketId}")
+    @ResponseStatus(HttpStatus.OK)
+    @Operation(summary = "Buy ticket", description = "Adding ticket to user")
+    @ApiResponse(
+            responseCode = "200",
+            description = "Successfully purchased",
+            content = {
+                    @Content(
+                            mediaType = "application/json",
+                            schema = @Schema(implementation = UserDto.class))
+            })
+    public UserDto buyTicket(@PathVariable(name = "ticketId") UUID ticketId, @PathVariable(name = "userId") UUID userId) {
+        return userServices.buyTicket(ticketId, userId);
+    }
+
+    //    @PostMapping("/create")
 //    public User createNewUser(@RequestBody User user){
 //        return userServices.createUser(user);
 //    }
