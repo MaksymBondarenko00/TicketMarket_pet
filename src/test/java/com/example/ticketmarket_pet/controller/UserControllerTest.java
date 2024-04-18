@@ -70,7 +70,6 @@ class UserControllerTest {
 
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
         Assertions.assertEquals(expectedInfo, actual);
-
     }
     @Test
     void showUserById() throws Exception {

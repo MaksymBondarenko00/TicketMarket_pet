@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @Data
 public class UserInfoDto {
+    String userInfoId;
     String username;
     String email;
     String phoneNumber;

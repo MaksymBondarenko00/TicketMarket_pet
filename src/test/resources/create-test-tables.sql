@@ -41,7 +41,6 @@ CREATE TABLE IF NOT EXISTS concerts
     country       varchar(32)            not null,
     city          varchar(32)            not null,
     address       varchar(64)            not null,
-    tickets_count integer                not null,
     date          date                   not null
 );
 
@@ -59,7 +58,8 @@ CREATE TABLE IF NOT EXISTS events
     event_name  varchar(64)            not null,
     event_type  varchar(64)            not null,
     description text                   not null,
-    created_at  varchar(32)            not null
+    created_at  varchar(32)            not null,
+    tickets_count integer                not null
 );
 
 CREATE TABLE IF NOT EXISTS orders

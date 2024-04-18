@@ -40,7 +40,7 @@ class TicketControllerTest {
     Ticket expected = new Ticket();
     {
         expected.setTickerID(UUID.fromString("64336538-3337-6234-6530-376334613962"));
-        expected.setEvent(new Event(UUID.fromString("39616566-3762-6663-3062-666234393561"), new ArrayList<>(), EventType.valueOf("SPECIAL_EVENT"),"Concert1","Description for Concert1", new Timestamp(System.currentTimeMillis())));
+        expected.setEvent(new Event(UUID.fromString("39616566-3762-6663-3062-666234393561"), EventType.valueOf("SPECIAL_EVENT"), "Concert1", "Description for Concert1", new Timestamp(System.currentTimeMillis()), 100, new ArrayList<>()));
         expected.setParticipant(new User());
         expected.setAreaType(AreaType.VIP);
         expected.setPrice(BigDecimal.valueOf(50.0));
@@ -66,7 +66,7 @@ class TicketControllerTest {
     void getTicketByType() throws Exception {
         Ticket expected1 = new Ticket();
         expected1.setTickerID(UUID.fromString("36663066-3764-6430-3035-656434306335"));
-        expected1.setEvent(new Event(UUID.fromString("37633363-6662-3562-6633-646234656333"), new ArrayList<>(), EventType.valueOf("FESTIVAL"),"Concert4","Description for Concert4", new Timestamp(System.currentTimeMillis())));
+        expected1.setEvent(new Event(UUID.fromString("37633363-6662-3562-6633-646234656333"), EventType.valueOf("FESTIVAL"),"Concert4","Description for Concert4", new Timestamp(System.currentTimeMillis()), 100, new ArrayList<>()));
         expected1.setParticipant(new User());
         expected1.setAreaType(AreaType.VIP);
         expected1.setPrice(BigDecimal.valueOf(40.0));

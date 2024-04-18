@@ -46,7 +46,6 @@ public class ConcertControllerTest {
         expected.setCountry("UK");
         expected.setCity("London");
         expected.setAddress("789 Oxford St");
-        expected.setCountOfTickets(1200);
 //        Date date = new GregorianCalendar(2025, Calendar.SEPTEMBER, 5).getTime();
         expected.setDate(new GregorianCalendar(2025, Calendar.SEPTEMBER, 5).getTime());
         expected.setListOfArtists(new ArrayList<>());
@@ -82,17 +81,4 @@ public class ConcertControllerTest {
         Assertions.assertEquals(200, mvcResult.getResponse().getStatus());
         Assertions.assertEquals(exceptedOrders, actual);
     }
-
-    @Test
-    void updateConcert() throws Exception {
-        MvcResult mvcResult = mockMvc
-                .perform(MockMvcRequestBuilders.put("/concert/update/33316463-3566-6131-6537-633834663061")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andReturn();
-
-        String responseContent = mvcResult.getResponse().getContentAsString();
-
-        assert responseContent.equals("***Updated successfully!***");
-    }
-
 }

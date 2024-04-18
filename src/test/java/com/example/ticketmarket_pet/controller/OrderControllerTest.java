@@ -2,6 +2,8 @@ package com.example.ticketmarket_pet.controller;
 
 import com.example.ticketmarket_pet.entity.Order;
 import com.example.ticketmarket_pet.entity.PromoCode;
+import com.example.ticketmarket_pet.entity.User;
+import com.example.ticketmarket_pet.entity.UserInfo;
 import com.example.ticketmarket_pet.entity.enums.PaymentMethod;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -39,7 +41,7 @@ class OrderControllerTest {
 
     {
         expected.setOrderId(UUID.fromString("65346234-6637-6161-6566-613734306330"));
-        expected.setClientID(UUID.fromString("61386536-6333-6639-6264-356434393964"));
+        expected.setClientID(new User(UUID.fromString("61386536-6333-6639-6264-356434393964"), "Jane", "Smith", new Timestamp(System.currentTimeMillis()), false, new ArrayList<>(), new ArrayList<>(), new UserInfo()));
         expected.setOrderCost(BigDecimal.valueOf(50));
         expected.setPromocode(new PromoCode(UUID.fromString("39626636-6432-3662-3539-333734383538"), 20));
         expected.setPaymentMethod(PaymentMethod.PAYPAL);
@@ -65,7 +67,7 @@ class OrderControllerTest {
     void ordersByCurrencyCodeAndPaymentMethod() throws Exception {
         Order expected1 = new Order();
         expected1.setOrderId(UUID.fromString("38613063-6262-3163-3162-366634376136"));
-        expected1.setClientID(UUID.fromString("66316236-6664-3666-3637-653434633833"));
+        expected.setClientID(new User(UUID.fromString("66316236-6664-3666-3637-653434633833"), "John", "Doe", new Timestamp(System.currentTimeMillis()), false, new ArrayList<>(), new ArrayList<>(), new UserInfo()));
         expected1.setOrderCost(BigDecimal.valueOf(120));
         expected1.setPromocode(null);
         expected1.setPaymentMethod(PaymentMethod.PAYPAL);

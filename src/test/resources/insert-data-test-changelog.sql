@@ -12,29 +12,29 @@ VALUES (CAST('e5a6d8c9b0a3f1e2d3c4b5a6d7e8f9a0' AS BINARY(16)), 'Artist1', 'BAND
        (CAST('f0e1d2c3b4a5b6c7d8e9f0a1b2c3d4' AS BINARY(16)), 'Artist4', 'BAND'),
        (CAST('1234567890abcdef1234567890abcdef' AS BINARY(16)), 'Artist5', 'BAND');
 
-INSERT INTO concerts(concert_id, concert_name, country, city, address, tickets_count, date)
-VALUES (CAST('ea7d23ec91f34b6c9692e3d1dc51d7fb' AS BINARY(16)), 'Concert1', 'USA', 'New York', '123 Broadway', 1000,
+INSERT INTO concerts(concert_id, concert_name, country, city, address, date)
+VALUES (CAST('ea7d23ec91f34b6c9692e3d1dc51d7fb' AS BINARY(16)), 'Concert1', 'USA', 'New York', '123 Broadway',
         '2024-03-10'),
-       (CAST('4fd672f8fb8e4249b723aa1850be5f6d' AS BINARY(16)), 'Concert2', 'Canada', 'Toronto', '456 King St', 800,
+       (CAST('4fd672f8fb8e4249b723aa1850be5f6d' AS BINARY(16)), 'Concert2', 'Canada', 'Toronto', '456 King St',
         '2025-06-25'),
-       (CAST('31dc5fa1e7c84f0a84a91414fc7f8f69' AS BINARY(16)), 'Concert3', 'UK', 'London', '789 Oxford St', 1200,
+       (CAST('31dc5fa1e7c84f0a84a91414fc7f8f69' AS BINARY(16)), 'Concert3', 'UK', 'London', '789 Oxford St',
         '2025-09-05'),
        (CAST('e4f8ed9e3c5f476d8cb75cddcf8c24d2' AS BINARY(16)), 'Concert4', 'Australia', 'Sydney', '101 George St',
-        1500, '2022-11-18'),
+         '2022-11-18'),
        (CAST('93ae1eaa65094d46b41f2a73e92d1e37' AS BINARY(16)), 'Concert5', 'Germany', 'Berlin', '202 Alexander plats',
-        900, '2026-04-07');
+         '2026-04-07');
 
 
-INSERT INTO events(event_id, event_name, event_type, description, created_at)
+INSERT INTO events(event_id, event_name, event_type, description, created_at, tickets_count)
 VALUES (CAST('9aef7bfc0bfb495a97a44a2f42f7e43d' AS BINARY(16)), 'Concert1', 'SPECIAL_EVENT', 'Description for Concert1',
-        NOW()),
+        NOW(), 200),
        (CAST('3e6cb2092b1b46f8b9ad3ac24c9a9df4' AS BINARY(16)), 'Concert2', 'THEATER', 'Description for Concert2',
-        NOW()),
+        NOW(), 200),
        (CAST('8d36a4d0e9c24c15a0445bc356f7adfb' AS BINARY(16)), 'Concert3', 'SPECIAL_EVENT', 'Description for Concert3',
-        NOW()),
+        NOW(), 200),
        (CAST('7c3cfb5bf3db4ec3942e6d0c1e678239' AS BINARY(16)), 'Concert4', 'FESTIVAL', 'Description for Concert4',
-        NOW()),
-       (CAST('ae9c5d6fe62c4586b8c420849787d5fc' AS BINARY(16)), 'Concert5', 'SPORT', 'Description for Concert5', NOW());
+        NOW(), 200),
+       (CAST('ae9c5d6fe62c4586b8c420849787d5fc' AS BINARY(16)), 'Concert5', 'SPORT', 'Description for Concert5', NOW(), 200);
 
 INSERT INTO users(user_id, first_name, last_name, user_info, role, is_blocked, created_at)
 VALUES (CAST('d0674b2978a34ac3bd6f96f5d9854a82' AS BINARY(16)), 'John', 'Doe',
