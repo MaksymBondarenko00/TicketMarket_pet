@@ -40,7 +40,9 @@ public interface UserMapper {
 //    @Mapping(target = "username", source = "userInfo.username")
 //    @Mapping(target = "password", source = "userInfo.password")
 //    @Mapping(target = "creationDate", expression = "java(DateFormatter.formatDate(user.getCreatedAt(), user.getCountry().name()))")
-    @Mapping(target = "userInfoDto", source = "user.userInfo")
+    @Mapping(target = "userInfo", source = "user.userInfo")
+    @Mapping(target = "userTickets", source = "user.userTickets")
+    @Mapping(target = "orders", ignore = true)
     UserDto toDto(User user);
     User toEntity(UserDto userDto);
 }

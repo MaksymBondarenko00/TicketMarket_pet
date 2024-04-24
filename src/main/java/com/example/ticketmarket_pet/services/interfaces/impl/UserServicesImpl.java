@@ -58,9 +58,9 @@ public class UserServicesImpl implements UserServices {
 
             event.setCountOfTickets(event.getCountOfTickets() - 1);
 
-            List<TicketDto> list = new ArrayList<>();
-            list.add(ticketMapper.toDto(ticket));
-            userDto.setTickets(list);
+            List<Ticket> list = new ArrayList<>();
+            list.add(ticket);
+            userDto.setUserTickets(list);
 
             return userDto;
         } else {

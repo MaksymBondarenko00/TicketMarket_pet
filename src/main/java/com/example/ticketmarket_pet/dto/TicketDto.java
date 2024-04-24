@@ -12,8 +12,9 @@ import java.sql.Timestamp;
 
 @Data
 public class TicketDto {
-    EventDto eventDto;
+    EventDto event;
     BigDecimal price;
     BigDecimal servicePayments;
+//    ConcertDto concert;
     AreaType areaType;
 }

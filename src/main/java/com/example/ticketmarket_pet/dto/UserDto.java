@@ -1,5 +1,7 @@
 package com.example.ticketmarket_pet.dto;
 
+import com.example.ticketmarket_pet.entity.Order;
+import com.example.ticketmarket_pet.entity.Ticket;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 
@@ -14,7 +16,8 @@ public class UserDto {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     Timestamp createdAt;
     boolean isBlocked;
-    List<TicketDto> tickets;
-    UserInfoDto userInfoDto;
+    List<Ticket> userTickets;
+    List<Order> orders;
+    UserInfoDto userInfo;
 
 }
