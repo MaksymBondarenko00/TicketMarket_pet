@@ -48,9 +48,9 @@ values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', UNHEX('e9df412
 INSERT INTO roles (role_id, role_name)
 VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 'ROLE_USER'),
        (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'ROLE_ADMIN'),
-       (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_ADMIN'),
-       (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_ADMIN'),
-       (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_ADMIN');
+       (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_CUSTOMER'),
+       (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_EMPLOYEE'),
+       (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_SUPERUSER');
 
 insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number, role)
 values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'USA',

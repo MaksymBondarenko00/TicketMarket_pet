@@ -76,8 +76,6 @@ public class UserServicesImpl implements UserServices {
 
 //    @Override
 //    public User createUser(User user) {
-//        UserInfo userInfo = user.getUserInfo();
-//        userInfoRepository.saveAndFlush(userInfo);
 //        return userRepository.saveAndFlush(user);
 //    }
 }

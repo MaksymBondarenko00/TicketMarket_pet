@@ -84,7 +84,7 @@ public class UserController {
         return userServices.buyTicket(ticketId, userId);
     }
 
-    //    @PostMapping("/create")
+//        @PostMapping("/create")
 //    public User createNewUser(@RequestBody User user){
 //        return userServices.createUser(user);
 //    }
