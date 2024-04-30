@@ -8,8 +8,14 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +40,19 @@ public class UserController {
                             mediaType = "application/json",
                             schema = @Schema(implementation = UserDto.class))
             })
-    public UserDto showUserById(@PathVariable(name = "id") String id) {
+    public UserDto showUserById(@PathVariable(name = "id") String id, HttpServletRequest request) {
+        System.out.println("****************************************************************");
+        handleRequest(request);
+        SecurityContext context = SecurityContextHolder.getContext();
+        Authentication authentication = context.getAuthentication();
+
+        Object principal = authentication.getPrincipal();
+        if (principal instanceof UserDetails) {
+            String username = ((UserDetails) principal).getUsername();
+            String password = ((UserDetails) principal).getPassword();
+            System.out.println("    USERNAME: " + username + "\n    PASSWORD: " + password);
+        }
+
         return userServices.getUserById(id);
     }
 
@@ -84,6 +102,14 @@ public class UserController {
         return userServices.buyTicket(ticketId, userId);
     }
 
+    public void handleRequest(HttpServletRequest request) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                System.out.println("JSESSIONID: " + cookie.getValue());
+            }
+        }
+    }
 //        @PostMapping("/create")
 //    public User createNewUser(@RequestBody User user){
 //        return userServices.createUser(user);

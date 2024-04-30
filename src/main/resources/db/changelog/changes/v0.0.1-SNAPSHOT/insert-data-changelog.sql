@@ -48,26 +48,24 @@ values (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'John', 'Doe', UNHEX('e9df412
 INSERT INTO roles (role_id, role_name)
 VALUES (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'), 'ROLE_USER'),
        (UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356'), 'ROLE_ADMIN'),
-       (UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a'), 'ROLE_CUSTOMER'),
-       (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_EMPLOYEE'),
-       (UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'), 'ROLE_SUPERUSER');
-
+       (UNHEX('16e05517895b448d84d0eb179af1db3d'), 'ROLE_EMPLOYEE');
+# john_doe pass 123
 insert into user_info(user_info_id, username, user_id, country, city, password, email, phone_number, card_number, role)
 values (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), 'john_doe', UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), 'USA',
-        'New York', 'password123', 'john@example.com',
+        'New York', '$2a$12$U0zj2X6DTdVmXbwoiUm7oeeLSHId0zD.bRlFHwSvf1xXsT3GHkcsa', 'john@example.com',
         '123-456-7890', '1234-5678-9012-3456', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')),
        (UNHEX('6f8202f6b9034cc789aeb332b2d23de5'), 'jane_smith', UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), 'Canada',
         'Toronto', 'qwerty456', 'jane@example.com',
         '987-654-3210', '9876-5432-1098-7654', UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')),
        (UNHEX('7c9dca5ffea343d39e8595e5f6abf862'), 'alice_johnson', UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), 'UK',
         'London', 'myp@ssw0rd', 'alice@example.com',
-        '456-789-0123', '4567-8901-2345-6789', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a')),
+        '456-789-0123', '4567-8901-2345-6789', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')),
        (UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'), 'bob_brown', UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 'Australia',
         'Sydney', 'securepass', 'bob@example.com',
         '789-012-3456', '7890-1234-5678-9012', UNHEX('16e05517895b448d84d0eb179af1db3d')),
        (UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'), 'emma_davis', UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 'Germany',
         'Berlin', 'pass1234', 'emma@example.com',
-        '012-345-6789', '0123-4567-8901-2345', UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'));
+        '012-345-6789', '0123-4567-8901-2345', UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
 
 insert into tickets(ticket_id, event_id, user_id, price, service_payments, area_type, has_bought, created_at)
 values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), UNHEX('9aef7bfc0bfb495a97a44a2f42f7e43d'),
@@ -80,7 +78,6 @@ values (UNHEX('d3e837b4e07c4a9baa17c1777e12d850'), UNHEX('9aef7bfc0bfb495a97a44a
         UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), 40.00, 4.00, 'VIP', false, NOW()),
        (UNHEX('c94c7604f9c14d14b99ed2799a44bb4a'), UNHEX('ae9c5d6fe62c4586b8c420849787d5fc'),
         UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), 25.00, 2.50, 'DANCE_FLOOR', false, NOW());
-
 
 insert into orders(order_id, client_id, order_cost, promo_code, payment_method, currency_code,
                    created_at)
@@ -117,11 +114,11 @@ VALUES (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), UNHEX('3e07e1705f2b47a0b9a7dc
 INSERT INTO user_role (user_id, role_id)
 VALUES (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')); -- admin is a ROLE_ADMIN
 INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4a')); -- admin is a ROLE_ADMIN
+VALUES (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
 INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), UNHEX('16e05517895b448d84d0eb179af1db3d')); -- admin is a ROLE_ADMIN
+VALUES (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), UNHEX('16e05517895b448d84d0eb179af1db3d'));
 INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), UNHEX('c88f636f66354e8eb3d76b3f207d4e1c'));
+VALUES (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
 -- admin is a ROLE_ADMIN
 
 -- Связывание ролей и прав
