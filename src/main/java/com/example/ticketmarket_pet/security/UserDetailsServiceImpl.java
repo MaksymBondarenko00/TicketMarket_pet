@@ -23,9 +23,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<UserInfo> userInfo = Optional.ofNullable(userInfoRepository.findByUsername(username));
-        if(!userInfo.isPresent()) {
+
+        if(userInfo.isEmpty()) {
             throw new UsernameNotFoundException(username);
         }
+
         return User.withUsername(username)
                 .username(userInfo.get().getUsername())
                 .password(userInfo.get().getPassword())
@@ -35,10 +37,12 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
     private Collection<? extends GrantedAuthority> getAuthorities(Collection<Role> roles) {
         List<GrantedAuthority> authorities = new ArrayList<>();
+
         for (Role role : roles) {
             authorities.add(new SimpleGrantedAuthority(role.getRoleName()));
             role.getAuthorities().forEach(authority -> authorities.add(new SimpleGrantedAuthority(authority.getAuthority())));
         }
+
         return authorities;
     }
 }

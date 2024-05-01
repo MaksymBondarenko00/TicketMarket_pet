@@ -109,16 +109,16 @@ INSERT INTO authorities (authority_id, authority_name)
 VALUES (UNHEX('a1b2c3d4e5f6a1b2c3d4e5f6a1b2c3d4'), 'WRITE_PRIVILEGE');
 
 -- Связывание пользователей и ролей
-INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('d0674b2978a34ac3bd6f96f5d9854a82'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')); -- user is a ROLE_USER
-INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('a8e6c3f9bd5d499da6c8c08367627fa1'), UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')); -- admin is a ROLE_ADMIN
-INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('bcb8e69b23024ec0b99e528b9d94bb17'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
-INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('f1b6fd6f67e44c838f4d6b176a3ff1d5'), UNHEX('16e05517895b448d84d0eb179af1db3d'));
-INSERT INTO user_role (user_id, role_id)
-VALUES (UNHEX('2c8abcbf2f9546a4b959bc5699b90b5c'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
+INSERT INTO user_info_role (user_info_id, role_id)
+VALUES (UNHEX('e9df4121e6834b4d9537b8a7d822e7a2'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d')); -- user is a ROLE_USER
+INSERT INTO user_info_role (user_info_id, role_id)
+VALUES (UNHEX('6f8202f6b9034cc789aeb332b2d23de5'), UNHEX('9f8d21ee3b9b42cd8f2adf1a5f964356')); -- admin is a ROLE_ADMIN
+INSERT INTO user_info_role (user_info_id, role_id)
+VALUES (UNHEX('7c9dca5ffea343d39e8595e5f6abf862'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
+INSERT INTO user_info_role (user_info_id, role_id)
+VALUES (UNHEX('4a5e7b199ac7487d9a6ef33e2cb5b29d'), UNHEX('16e05517895b448d84d0eb179af1db3d'));
+INSERT INTO user_info_role (user_info_id, role_id)
+VALUES (UNHEX('dd4d792cf7b64153a0b2a6b8a50ef48a'), UNHEX('3e07e1705f2b47a0b9a7dc07936f9e4d'));
 -- admin is a ROLE_ADMIN
 
 -- Связывание ролей и прав

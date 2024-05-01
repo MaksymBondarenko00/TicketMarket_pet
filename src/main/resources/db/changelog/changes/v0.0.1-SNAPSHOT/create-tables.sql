@@ -97,12 +97,12 @@ CREATE TABLE IF NOT EXISTS authorities
     authority_name VARCHAR(255) NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS user_role
+CREATE TABLE IF NOT EXISTS user_info_role
 (
-    user_id binary(16) NOT NULL,
+    user_info_id binary(16) NOT NULL,
     role_id binary(16) NOT NULL,
-    PRIMARY KEY (user_id, role_id),
-    FOREIGN KEY (user_id) REFERENCES users (user_id),
+    PRIMARY KEY (user_info_id, role_id),
+    FOREIGN KEY (user_info_id) REFERENCES user_info (user_info_id),
     FOREIGN KEY (role_id) REFERENCES roles (role_id)
 );
 
